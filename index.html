@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Єврокомісар Львів — швидке оформлення ДТП по європротоколу 24/7</title>
+  <meta name="description" content="Швидкий виклик єврокомісара у Львові та області 24/7. Професійне оформлення ДТП по європротоколу без поліції, штрафів та судів." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-darker: #090e1a;
+      --bg-light: #f8fafc;
+      --surface: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --danger: #ef4444;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background: var(--surface);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--bg-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .header-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--bg-dark);
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .header-phone:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at top right, #1e293b 0%, var(--bg-dark) 55%, var(--bg-darker) 100%);
+      color: #fff;
+      padding: 84px 0 92px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .badge-247 {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fcd34d;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.2vw, 3.25rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.12rem;
+      color: #cbd5e1;
+      max-width: 600px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 26px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-dark);
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .stat-item strong {
+      display: block;
+      font-size: 1.35rem;
+      color: #fff;
+    }
+
+    .stat-item span {
+      font-size: 0.88rem;
+      color: #94a3b8;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .hero-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .hero-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .check-icon {
+      color: var(--accent);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .hero-card-phone {
+      display: block;
+      text-align: center;
+      background: #fff;
+      color: var(--bg-dark);
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .hero-card-phone:hover {
+      background: #f1f5f9;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-light {
+      background: var(--bg-light);
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      color: var(--accent-hover);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 1.02rem;
+    }
+
+    .contact-box {
+      background: var(--bg-dark);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    .big-phone {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    /* Steps */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(245, 158, 11, 0.14);
+      color: var(--accent-hover);
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+    }
+
+    .step-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+    }
+
+    /* Price Banner */
+    .price-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #fff;
+      border-radius: 24px;
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .price-banner h2 {
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      margin-bottom: 12px;
+    }
+
+    .price-banner p {
+      color: #cbd5e1;
+      max-width: 600px;
+      font-size: 1.02rem;
+    }
+
+    /* Europrotocol Info */
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 14px;
+    }
+
+    .info-card p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .benefit-item {
+      background: var(--bg-light);
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .benefit-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .benefit-item span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Reviews */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .review-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .stars {
+      color: var(--accent);
+      font-size: 1.05rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .review-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .review-author {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-darker);
+      color: #94a3b8;
+      padding: 56px 0 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    footer h4 {
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+    }
+
+    footer p, footer li {
+      font-size: 0.93rem;
+      margin-bottom: 8px;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.86rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Floating Call Button */
+    .floating-call {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 99;
+      background: #22c55e;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s;
+    }
+
+    .floating-call:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero-grid, .about-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .reviews-grid, .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 56px 0 64px;
+      }
+      .price-banner {
+        padding: 32px 24px;
+      }
+      .header-phone {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ХЕДЕР -->
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-badge">ЄК</span>
+        <span>Єврокомісар Львів</span>
+      </a>
+      <nav>
+        <a href="#about">Про службу</a>
+        <a href="#steps">Як працюємо</a>
+        <a href="#price">Ціна</a>
+        <a href="#europrotocol">Європротокол</a>
+        <a href="#reviews">Відгуки</a>
+      </nav>
+      <a href="tel:+380990000000" class="header-phone">📞 +38 (099) 000-00-00</a>
+    </div>
+  </header>
+
+  <!-- ГОЛОВНИЙ ЕКРАН -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge-247">
+          <span class="dot"></span>
+          Працюємо 24/7 у Львові та області
+        </div>
+        <h1>Єврокомісар у Львові — <span>швидке оформлення ДТП</span> по європротоколу</h1>
+        <p class="hero-sub">
+          Оформимо ДТП швидко, грамотно та без поліції, штрафів і судів. Оперативний виїзд на місце пригоди та повний пакет документів для страхової компанії.
+        </p>
+        <div class="hero-actions">
+          <a href="tel:+380990000000" class="btn btn-primary">📞 Викликати єврокомісара</a>
+          <a href="https://t.me/your_telegram" target="_blank" class="btn btn-outline">✈️ Написати в Telegram</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <strong>15–20 хв</strong>
+            <span>Середній час доїзду</span>
+          </div>
+          <div class="stat-item">
+            <strong>24/7</strong>
+            <span>Без вихідних та свят</span>
+          </div>
+          <div class="stat-item">
+            <strong>Без штрафів</strong>
+            <span>Права залишаються у вас</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Що входить у виїзд комісара:</h3>
+        <ul class="hero-checklist">
+          <li><span class="check-icon">✓</span> Оперативний приїзд на місце ДТП у Львові та області</li>
+          <li><span class="check-icon">✓</span> Професійна фото- та відеофіксація обставин і пошкоджень</li>
+          <li><span class="check-icon">✓</span> Правильне складання схеми ДТП та заповнення європротоколу</li>
+          <li><span class="check-icon">✓</span> Консультація щодо подальших дій та подачі у страхову</li>
+        </ul>
+        <a href="tel:+380990000000" class="hero-card-phone">+38 (099) 000-00-00</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРО СЛУЖБУ -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <div class="section-head" style="margin-bottom: 24px;">
+          <span class="section-tag">Про нас</span>
+          <h2>Служба аварійних єврокомісарів у Львові</h2>
+        </div>
+        <p>
+          <strong>Аварійний комісар</strong> — це досвідчений фахівець у сфері дорожньо-транспортних пригод, який бере на себе всю юридичну й технічну частину оформлення аварії на місці.
+        </p>
+        <p>
+          Вам не потрібно годинами чекати патрульну поліцію, ризикувати отримати штраф чи вилучення водійського посвідчення. Ми проводимо детальний огляд місця події, робимо правильну фотофіксацію та заповнюємо європротокол відповідно до всіх вимог страхових компаній.
+        </p>
+        <p>
+          У результаті обидва учасники ДТП отримують повний і правильно оформлений пакет документів для отримання страхової виплати.
+        </p>
+      </div>
+
+      <div class="contact-box">
+        <h3>Потрапили в ДТП?</h3>
+        <p>Не панікуйте та не переставляйте авто до фіксації. Зателефонуйте нам — ми підкажемо перші кроки та одразу виїдемо на місце.</p>
+        <a href="tel:+380990000000" class="big-phone">+38 (099) 000-00-00</a>
+        <a href="tel:+380990000000" class="btn btn-primary" style="width: 100%;">Зателефонувати зараз</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЯК ПРАЦЮЄМО -->
+  <section id="steps" class="section-light">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Алгоритм дій</span>
+        <h2>Як працює єврокомісар по ДТП у Львові</h2>
+        <p>Увесь процес займає в середньому 20–30 хвилин з моменту приїзду фахівця.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Виклик єврокомісара</h3>
+          <p>Ви телефонуєте на нашу лінію 24/7, повідомляєте локацію, і вільний комісар одразу вирушає до вас.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Фіксація обставин</h3>
+          <p>Фахівець виконує детальну фото- та відеофіксацію місця ДТП, дорожньої обстановки та пошкоджень авто.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Оформлення ДТП</h3>
+          <p>Складаємо точну схему пригоди та безпомилково заповнюємо європротокол відповідно до закону.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <h3>Готові документи</h3>
+          <p>Ви отримуєте готовий пакет документів та чітку інструкцію, як подати заяву у страхову компанію.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЦІНА -->
+  <section id="price">
+    <div class="container">
+      <div class="price-banner">
+        <div>
+          <h2>Яка ціна виклику єврокомісара у Львові?</h2>
+          <p>
+            Вартість оформлення ДТП по європротоколу залежить від локації (Львів чи виїзд в область) та складності ситуації. Зателефонуйте нам 24/7 — і ми одразу назвемо точну фіксовану ціну без прихованих доплат.
+          </p>
+        </div>
+        <a href="tel:+380990000000" class="btn btn-primary">📞 Дізнатися точну ціну</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЄВРОПРОТОКОЛ -->
+  <section id="europrotocol" class="section-light">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Корисна інформація</span>
+        <h2>Що таке оформлення ДТП по європротоколу?</h2>
+      </div>
+
+      <div class="info-card">
+        <h3>Швидке врегулювання без поліції та судів</h3>
+        <p>
+          Європротокол — це офіційний бланк повідомлення про ДТП, який заповнюється водіями-учасниками на місці аварії без виклику поліції. Після заповнення документ подається до страхової компанії для отримання грошової компенсації.
+        </p>
+        <p>
+          Головна умова: у ДТП немає травмованих, обидва водії тверезі, мають чинні поліси ОСЦПВ та дійшли згоди щодо обставин пригоди.
+        </p>
+
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <strong>Без штрафу та суду</strong>
+            <span>Винуватець ДТП не сплачує адміністративний штраф і не ходить на судові засідання.</span>
+          </div>
+          <div class="benefit-item">
+            <strong>Права залишаються з вами</strong>
+            <span>Поліція не вилучає водійське посвідчення на період розгляду справи.</span>
+          </div>
+          <div class="benefit-item">
+            <strong>Економія часу</strong>
+            <span>Ви звільняєте дорогу та повертаєтесь до своїх справ за 20–30 хвилин.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ВІДГУКИ -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Відгуки</span>
+        <h2>Що кажуть наші клієнти</h2>
+        <p>Реальні враження водіїв, яким ми допомогли швидко та спокійно оформити ДТП у Львові.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p>«Потрапила в ДТП на проспекті Чорновола, дуже розгубилася. Викликала єврокомісара — приїхав за 15 хвилин, усе спокійно пояснив, оформив документи і підказав, як подати заяву в страхову. Щиро рекомендую!»</p>
+          </div>
+          <div class="review-author">Олена, м. Львів</div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p>«Дуже виручили! Поспішав на важливу зустріч, а тут невелика аварія на перехресті. Комісар приїхав максимально швидко, за 20 хвилин усе зафіксували та оформили без поліції. Супер сервіс!»</p>
+          </div>
+          <div class="review-author">Олег, м. Львів</div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p>«Винуватець ДТП був я, тому викликали аварійного комісара. Усе оформили грамотно, страхова прийняла документи без жодних зауважень. Залишився з правами, без штрафів і зайвих нервів.»</p>
+          </div>
+          <div class="review-author">Сергій, м. Львів</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФУТЕР -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Єврокомісар Львів</h4>
+          <p>Аварійна служба з оформлення ДТП по європротоколу без поліції, штрафів та судів. Працюємо цілодобово 24/7 по Львову та Львівській області.</p>
+        </div>
+        <div>
+          <h4>Навігація</h4>
+          <ul>
+            <li><a href="#about">Про службу</a></li>
+            <li><a href="#steps">Як працюємо</a></li>
+            <li><a href="#price">Ціна виклику</a></li>
+            <li><a href="#europrotocol">Про європротокол</a></li>
+            <li><a href="#reviews">Відгуки</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакти 24/7</h4>
+          <ul>
+            <li>📞 <a href="tel:+380990000000">+38 (099) 000-00-00</a></li>
+            <li>✈️ <a href="https://t.me/your_telegram" target="_blank">Telegram</a></li>
+            <li>📍 м. Львів та Львівська область</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Єврокомісар Львів. Всі права захищено.</span>
+        <span>Швидке оформлення ДТП 24/7</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ПЛАВАЮЧА КНОПКА ДЗВІНКА -->
+  <a href="tel:+380990000000" class="floating-call">📞 Викликати 24/7</a>
+
+</body>
+</html>
