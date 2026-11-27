@@ -279,7 +279,7 @@
     /* Page body */
     .page-content {
       padding: 24px 28px;
-      max-width: 1400px;
+      max-width: 1480px;
       width: 100%;
     }
 
@@ -308,6 +308,42 @@
       color: var(--text-muted);
       font-size: 15px;
       font-weight: 500;
+    }
+
+    /* Mode Switcher (Таблиця / Календар) */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .view-switcher {
+      display: inline-flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .view-mode-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .view-mode-btn.active {
+      background: var(--bg-main);
+      color: var(--text-main);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
     }
 
     /* Sub-tabs */
@@ -542,6 +578,218 @@
       background: #fef2f2;
     }
 
+    /* RENTAL TIMELINE CALENDAR */
+    .cal-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: #f9fafb;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .cal-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cal-range-title {
+      font-weight: 700;
+      font-size: 14px;
+      min-width: 170px;
+      text-align: center;
+    }
+
+    .cal-legend {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+    .cal-scroll {
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .cal-grid {
+      display: grid;
+      min-width: 1180px;
+    }
+
+    .cal-corner {
+      position: sticky;
+      left: 0;
+      z-index: 15;
+      background: #f9fafb;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+
+    .cal-day-head {
+      padding: 8px 4px;
+      text-align: center;
+      border-right: 1px solid #f1f5f9;
+      border-bottom: 1px solid var(--border);
+      background: #f9fafb;
+      font-size: 11px;
+    }
+
+    .cal-day-head.today {
+      background: var(--accent-soft);
+      color: var(--accent-hover);
+      font-weight: 700;
+    }
+
+    .cal-day-head.weekend {
+      background: #f3f4f6;
+    }
+
+    .cal-day-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .cal-day-head.today .cal-day-num {
+      color: var(--accent-hover);
+    }
+
+    .cal-bike-col {
+      position: sticky;
+      left: 0;
+      z-index: 10;
+      background: var(--surface);
+      padding: 12px 14px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+    }
+
+    .cal-bike-title {
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .cal-bike-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .cal-track {
+      position: relative;
+      display: grid;
+      border-bottom: 1px solid var(--border);
+      min-height: 64px;
+      align-items: center;
+    }
+
+    .cal-cell {
+      height: 100%;
+      border-right: 1px solid #f1f5f9;
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+
+    .cal-cell:hover {
+      background: #fff7ed;
+    }
+
+    .cal-cell.today {
+      background: rgba(249, 115, 22, 0.06);
+    }
+
+    .cal-bar {
+      position: relative;
+      z-index: 5;
+      margin: 6px 3px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.25;
+      cursor: pointer;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+
+    .cal-bar:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
+      z-index: 8;
+    }
+
+    .cal-bar.active {
+      background: #e0f2fe;
+      border-left-color: #0284c7;
+      color: #0c4a6e;
+    }
+
+    .cal-bar.overdue {
+      background: #fee2e2;
+      border-left-color: #dc2626;
+      color: #7f1d1d;
+    }
+
+    .cal-bar.pending {
+      background: #fef3c7;
+      border-left-color: #d97706;
+      color: #78350f;
+    }
+
+    .cal-bar.done {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+      color: #374151;
+      opacity: 0.85;
+    }
+
+    .cal-bar-client {
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cal-bar-dates {
+      font-size: 11px;
+      opacity: 0.9;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     /* Dashboard KPIs */
     .kpi-grid {
       display: grid;
@@ -706,6 +954,7 @@
       display: flex;
       justify-content: flex-end;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .empty-state {
@@ -817,61 +1066,93 @@
 
     <main class="page-content">
 
-      <!-- 1. ОРЕНДИ -->
+      <!-- 1. ОРЕНДИ (ТАБЛИЦЯ + КАЛЕНДАР) -->
       <section id="view-rentals">
         <div class="page-header">
           <div class="page-title">
             <h1>Оренди</h1>
             <span class="page-count" id="rentalsHeaderCount">0</span>
           </div>
-          <button class="btn-primary" onclick="openRentalModal()">+ Нова оренда</button>
-        </div>
-
-        <div class="tabs-bar">
-          <div class="tab-btn active" data-tab="all" onclick="setRentalTab('all')">
-            Всі записи <span class="tab-count" id="tabCountAll">0</span>
-          </div>
-          <div class="tab-btn" data-tab="active" onclick="setRentalTab('active')">
-            Активні <span class="tab-count" id="tabCountActive">0</span>
-          </div>
-          <div class="tab-btn" data-tab="overdue" onclick="setRentalTab('overdue')">
-            Прострочені / Сьогодні <span class="tab-count" id="tabCountOverdue">0</span>
-          </div>
-          <div class="tab-btn" data-tab="pending" onclick="setRentalTab('pending')">
-            Чекають оплати <span class="tab-count" id="tabCountPending">0</span>
-          </div>
-          <div class="tab-btn" data-tab="done" onclick="setRentalTab('done')">
-            Завершені <span class="tab-count" id="tabCountDone">0</span>
+          <div class="header-actions">
+            <div class="view-switcher">
+              <button class="view-mode-btn active" id="btnModeTable" onclick="setRentalsDisplayMode('table')">☰ Таблиця</button>
+              <button class="view-mode-btn" id="btnModeCalendar" onclick="setRentalsDisplayMode('calendar')">📅 Календар</button>
+            </div>
+            <button class="btn-primary" onclick="openRentalModal()">+ Нова оренда</button>
           </div>
         </div>
 
-        <div class="toolbar">
-          <div class="search-box">
-            <span>🔎</span>
-            <input type="text" id="rentalFilterInput" placeholder="ПІБ, Telegram, номер договору або скутер..." oninput="renderRentals()">
+        <!-- РЕЖИМ: ТАБЛИЦЯ -->
+        <div id="rentalsTableContainer">
+          <div class="tabs-bar">
+            <div class="tab-btn active" data-tab="all" onclick="setRentalTab('all')">
+              Всі записи <span class="tab-count" id="tabCountAll">0</span>
+            </div>
+            <div class="tab-btn" data-tab="active" onclick="setRentalTab('active')">
+              Активні <span class="tab-count" id="tabCountActive">0</span>
+            </div>
+            <div class="tab-btn" data-tab="overdue" onclick="setRentalTab('overdue')">
+              Прострочені / Сьогодні <span class="tab-count" id="tabCountOverdue">0</span>
+            </div>
+            <div class="tab-btn" data-tab="pending" onclick="setRentalTab('pending')">
+              Чекають оплати <span class="tab-count" id="tabCountPending">0</span>
+            </div>
+            <div class="tab-btn" data-tab="done" onclick="setRentalTab('done')">
+              Завершені <span class="tab-count" id="tabCountDone">0</span>
+            </div>
           </div>
-          <div style="font-size:12px; color:var(--text-muted);">
-            Натисни <strong>«Продовжити +7д»</strong> для швидкої пролонгації тижневої оренди кур'єру
+
+          <div class="toolbar">
+            <div class="search-box">
+              <span>🔎</span>
+              <input type="text" id="rentalFilterInput" placeholder="ПІБ, Telegram, номер договору або скутер..." oninput="renderRentals()">
+            </div>
+            <div style="font-size:12px; color:var(--text-muted);">
+              Натисни <strong>«+7 дн.»</strong> для швидкої пролонгації тижневої оренди кур'єру
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Оренда</th>
+                    <th>Клієнт (Кур'єр)</th>
+                    <th>Скутер та АКБ</th>
+                    <th>Початок</th>
+                    <th>Повернення / Оплата</th>
+                    <th>Статус</th>
+                    <th>Сума</th>
+                    <th style="text-align:right;">Дії</th>
+                  </tr>
+                </thead>
+                <tbody id="rentalsTableBody"></tbody>
+              </table>
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Оренда</th>
-                  <th>Клієнт (Кур'єр)</th>
-                  <th>Скутер та АКБ</th>
-                  <th>Початок</th>
-                  <th>Повернення / Оплата</th>
-                  <th>Статус</th>
-                  <th>Сума</th>
-                  <th style="text-align:right;">Дії</th>
-                </tr>
-              </thead>
-              <tbody id="rentalsTableBody"></tbody>
-            </table>
+        <!-- РЕЖИМ: КАЛЕНДАР ОРЕНДИ -->
+        <div id="rentalsCalendarContainer" class="hidden">
+          <div class="card">
+            <div class="cal-controls">
+              <div class="cal-nav">
+                <button class="btn-ghost" onclick="shiftCalendar(-7)">◀ −7 дн.</button>
+                <button class="btn-ghost" onclick="resetCalendarToday()">Сьогодні</button>
+                <button class="btn-ghost" onclick="shiftCalendar(7)">+7 дн. ▶</button>
+                <div class="cal-range-title" id="calRangeTitle">—</div>
+              </div>
+              <div class="cal-legend">
+                <span class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span> Активна</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span> Прострочена / Сьогодні</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#d97706;"></span> Чекає оплати</span>
+                <span style="color:var(--text-main); font-weight:500;">💡 Клікни по вільній даті, щоб оформити скутер</span>
+              </div>
+            </div>
+            <div class="cal-scroll">
+              <div class="cal-grid" id="rentalCalendarGrid"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -1097,6 +1378,18 @@
     </div>
   </div>
 
+  <!-- МОДАЛКА: КАРТКА ОРЕНДИ З КАЛЕНДАРЯ -->
+  <div class="modal-backdrop" id="rentalDetailModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2 id="detailModalTitle">Оренда №</h2>
+        <button class="close-btn" onclick="closeModal('rentalDetailModal')">&times;</button>
+      </div>
+      <div class="modal-body" id="detailModalBody"></div>
+      <div class="modal-foot" id="detailModalFoot"></div>
+    </div>
+  </div>
+
   <!-- МОДАЛКА: ДОДАТИ СКУТЕР -->
   <div class="modal-backdrop" id="bikeModal">
     <div class="modal">
@@ -1191,8 +1484,8 @@
           clientName: 'Мельник Тарас Васильович',
           clientPhone: '+380 67 412 88 19',
           clientTg: '@taras_lviv',
-          startDate: offsetDate(-5),
-          endDate: offsetDate(2),
+          startDate: offsetDate(-4),
+          endDate: offsetDate(3),
           amount: 3700,
           deposit: 2000,
           status: 'active'
@@ -1217,8 +1510,8 @@
           clientName: 'Савчук Дмитро Петрович',
           clientPhone: '+380 50 890 11 32',
           clientTg: '@dima_bolt',
-          startDate: offsetDate(-4),
-          endDate: offsetDate(3),
+          startDate: offsetDate(-2),
+          endDate: offsetDate(5),
           amount: 3500,
           deposit: 2000,
           status: 'pending'
@@ -1237,11 +1530,21 @@
 
     let db = loadData();
     let currentTab = 'all';
+    let rentalsDisplayMode = 'table';
+    let calOffsetDays = -3; // Починаємо показ за 3 дні до сьогодні, щоб було видно поточні та майбутні оренди
+    const CAL_DAYS_COUNT = 21;
 
     function offsetDate(days) {
       const d = new Date();
       d.setDate(d.getDate() + days);
-      return d.toISOString().split('T')[0];
+      return toIsoDate(d);
+    }
+
+    function toIsoDate(d) {
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
     }
 
     function formatDateUA(iso) {
@@ -1250,11 +1553,16 @@
       return `${d}.${m}.${y}`;
     }
 
+    function formatShortDate(iso) {
+      if (!iso) return '—';
+      const [, m, d] = iso.split('-');
+      return `${d}.${m}`;
+    }
+
     function daysDiff(endIso) {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      const end = new Date(endIso);
-      end.setHours(0, 0, 0, 0);
+      const end = new Date(endIso + 'T00:00:00');
       return Math.round((end - today) / (1000 * 60 * 60 * 24));
     }
 
@@ -1298,6 +1606,25 @@
       renderAll();
     }
 
+    function setRentalsDisplayMode(mode) {
+      rentalsDisplayMode = mode;
+      document.getElementById('btnModeTable').classList.toggle('active', mode === 'table');
+      document.getElementById('btnModeCalendar').classList.toggle('active', mode === 'calendar');
+      document.getElementById('rentalsTableContainer').classList.toggle('hidden', mode !== 'table');
+      document.getElementById('rentalsCalendarContainer').classList.toggle('hidden', mode !== 'calendar');
+      if (mode === 'calendar') renderCalendar();
+    }
+
+    function shiftCalendar(days) {
+      calOffsetDays += days;
+      renderCalendar();
+    }
+
+    function resetCalendarToday() {
+      calOffsetDays = -3;
+      renderCalendar();
+    }
+
     function setRentalTab(tab) {
       currentTab = tab;
       document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -1308,8 +1635,153 @@
 
     function handleGlobalSearch(val) {
       switchView('rentals');
+      setRentalsDisplayMode('table');
       document.getElementById('rentalFilterInput').value = val;
       renderRentals();
+    }
+
+    /* RENDER CALENDAR */
+    function renderCalendar() {
+      const grid = document.getElementById('rentalCalendarGrid');
+      const todayIso = offsetDate(0);
+      const dayNames = ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+      const monthNames = ['Січ', 'Лют', 'Бер', 'Кві', 'Тра', 'Чер', 'Лип', 'Сер', 'Вер', 'Жов', 'Лис', 'Гру'];
+
+      const days = [];
+      for (let i = 0; i < CAL_DAYS_COUNT; i++) {
+        const d = new Date();
+        d.setDate(d.getDate() + calOffsetDays + i);
+        days.push({
+          iso: toIsoDate(d),
+          dayNum: d.getDate(),
+          month: monthNames[d.getMonth()],
+          dow: dayNames[d.getDay()],
+          isWeekend: d.getDay() === 0 || d.getDay() === 6,
+          isToday: toIsoDate(d) === todayIso
+        });
+      }
+
+      document.getElementById('calRangeTitle').textContent =
+        `${formatShortDate(days[0].iso)} — ${formatShortDate(days[days.length - 1].iso)}`;
+
+      grid.style.gridTemplateColumns = `210px repeat(${CAL_DAYS_COUNT}, minmax(46px, 1fr))`;
+
+      let html = `<div class="cal-corner">Скутер / Статус</div>`;
+      days.forEach(d => {
+        const cls = ['cal-day-head', d.isToday ? 'today' : '', d.isWeekend ? 'weekend' : ''].join(' ');
+        html += `
+          <div class="${cls}">
+            <div>${d.dow}</div>
+            <div class="cal-day-num">${d.dayNum}</div>
+            <div style="font-size:10px; opacity:0.75;">${d.month}</div>
+          </div>
+        `;
+      });
+
+      const firstIso = days[0].iso;
+      const lastIso = days[days.length - 1].iso;
+
+      db.bikes.forEach(bike => {
+        const busy = isBikeBusy(bike.id);
+        const statusDot = busy
+          ? `<span style="color:var(--blue); font-size:11px;">● В оренді</span>`
+          : `<span style="color:var(--green); font-size:11px;">● Вільний</span>`;
+
+        html += `
+          <div class="cal-bike-col">
+            <div class="cal-bike-title">
+              <span>⚡ ${bike.num} • ${bike.model}</span>
+            </div>
+            <div class="cal-bike-sub">${bike.battery} • ${statusDot}</div>
+          </div>
+        `;
+
+        // Знаходимо оренди для цього скутера, які потрапляють у видимий діапазон дат
+        const bikeRentals = db.rentals.filter(r =>
+          r.bikeId === bike.id &&
+          r.endDate >= firstIso &&
+          r.startDate <= lastIso
+        );
+
+        let trackCells = '';
+        days.forEach((d, idx) => {
+          trackCells += `
+            <div class="cal-cell ${d.isToday ? 'today' : ''}"
+                 style="grid-column: ${idx + 1}; grid-row: 1;"
+                 title="Натисни, щоб здати ${bike.num} з ${formatDateUA(d.iso)}"
+                 onclick="openRentalModal('${bike.id}', '${d.iso}')">
+            </div>
+          `;
+        });
+
+        let barsHtml = '';
+        bikeRentals.forEach((r, rIdx) => {
+          const st = getComputedStatus(r);
+          let startIdx = days.findIndex(d => d.iso >= r.startDate);
+          if (startIdx === -1) startIdx = 0;
+          if (r.startDate < firstIso) startIdx = 0;
+
+          let endIdx = -1;
+          for (let i = days.length - 1; i >= 0; i--) {
+            if (days[i].iso <= r.endDate) {
+              endIdx = i;
+              break;
+            }
+          }
+          if (endIdx < startIdx) endIdx = startIdx;
+
+          const colStart = startIdx + 1;
+          const colEnd = endIdx + 2;
+          const shortClient = r.clientName.split(' ').slice(0, 2).join(' ');
+
+          barsHtml += `
+            <div class="cal-bar ${st}"
+                 style="grid-column: ${colStart} / ${colEnd}; grid-row: ${rIdx + 1};"
+                 title="${r.number}: ${r.clientName} (${formatDateUA(r.startDate)} — ${formatDateUA(r.endDate)})"
+                 onclick="openRentalDetail('${r.id}')">
+              <div class="cal-bar-client">${r.number} • ${shortClient}</div>
+              <div class="cal-bar-dates">${formatShortDate(r.startDate)} — ${formatShortDate(r.endDate)}</div>
+            </div>
+          `;
+        });
+
+        html += `
+          <div class="cal-track" style="grid-column: 2 / span ${CAL_DAYS_COUNT}; grid-template-columns: repeat(${CAL_DAYS_COUNT}, minmax(46px, 1fr));">
+            ${trackCells}
+            ${barsHtml}
+          </div>
+        `;
+      });
+
+      grid.innerHTML = html;
+    }
+
+    function openRentalDetail(id) {
+      const r = db.rentals.find(x => x.id === id);
+      if (!r) return;
+      const bike = getBike(r.bikeId);
+      const st = getComputedStatus(r);
+      const left = daysDiff(r.endDate);
+
+      document.getElementById('detailModalTitle').textContent = `Оренда ${r.number} • Скутер ${bike.num}`;
+      document.getElementById('detailModalBody').innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px;">
+          <div><strong>Скутер:</strong> ${bike.num} ${bike.model} (${bike.battery})</div>
+          <div><strong>Клієнт:</strong> ${r.clientName}</div>
+          <div><strong>Телефон:</strong> <a href="tel:${r.clientPhone}" style="color:var(--blue); font-weight:600;">${r.clientPhone}</a></div>
+          ${r.clientTg ? `<div><strong>Telegram:</strong> <a href="https://t.me/${r.clientTg.replace('@','')}" target="_blank" style="color:var(--blue);">${r.clientTg}</a></div>` : ''}
+          <div><strong>Термін оренди:</strong> ${formatDateUA(r.startDate)} — <strong>${formatDateUA(r.endDate)}</strong> (${left < 0 ? 'прострочено ' + Math.abs(left) + ' дн.' : left === 0 ? 'сьогодні оплата' : 'залишилось ' + left + ' дн.'})</div>
+          <div><strong>Сума:</strong> ${Number(r.amount).toLocaleString('uk-UA')} ₴ (Застава: ${Number(r.deposit || 0).toLocaleString('uk-UA')} ₴)</div>
+        </div>
+      `;
+
+      document.getElementById('detailModalFoot').innerHTML = `
+        <button class="btn-ghost" onclick="closeModal('rentalDetailModal')">Закрити</button>
+        ${st === 'pending' ? `<button class="icon-btn success" style="padding:8px 14px;" onclick="markPaid('${r.id}'); closeModal('rentalDetailModal');">✓ Позначити оплаченим</button>` : ''}
+        ${st !== 'done' ? `<button class="btn-primary" onclick="extendRental('${r.id}', 7); closeModal('rentalDetailModal');">+7 днів (Продовжити)</button>` : ''}
+        ${st !== 'done' ? `<button class="icon-btn success" style="padding:8px 14px;" onclick="finishRental('${r.id}'); closeModal('rentalDetailModal');">Завершити оренду</button>` : ''}
+      `;
+      openModal('rentalDetailModal');
     }
 
     function renderRentals() {
@@ -1571,6 +2043,7 @@
       document.getElementById('navRentalsCount').textContent = db.rentals.filter(r => r.status !== 'done').length;
       document.getElementById('navBikesCount').textContent = db.bikes.length;
       renderRentals();
+      if (rentalsDisplayMode === 'calendar') renderCalendar();
       renderDashboard();
       renderBikes();
       renderClients();
@@ -1587,7 +2060,7 @@
       document.getElementById(id).classList.remove('open');
     }
 
-    function openRentalModal(preselectedBikeId = '') {
+    function openRentalModal(preselectedBikeId = '', customStartDate = '') {
       const select = document.getElementById('rBikeId');
       select.innerHTML = db.bikes.map(b => {
         const busy = isBikeBusy(b.id);
@@ -1596,8 +2069,14 @@
         </option>`;
       }).join('');
 
-      document.getElementById('rStartDate').value = offsetDate(0);
-      document.getElementById('rEndDate').value = offsetDate(7);
+      const startIso = customStartDate || offsetDate(0);
+      const endObj = new Date(startIso + 'T00:00:00');
+      endObj.setDate(endObj.getDate() + 7);
+
+      const selectedBike = getBike(preselectedBikeId || db.bikes[0]?.id);
+      document.getElementById('rAmount').value = selectedBike.rate || 3500;
+      document.getElementById('rStartDate').value = startIso;
+      document.getElementById('rEndDate').value = toIsoDate(endObj);
       document.getElementById('rClientName').value = '';
       document.getElementById('rClientPhone').value = '';
       document.getElementById('rClientTg').value = '';
@@ -1641,9 +2120,9 @@
     function extendRental(id, days) {
       const r = db.rentals.find(x => x.id === id);
       if (!r) return;
-      const base = new Date(r.endDate);
+      const base = new Date(r.endDate + 'T00:00:00');
       base.setDate(base.getDate() + days);
-      r.endDate = base.toISOString().split('T')[0];
+      r.endDate = toIsoDate(base);
       const bike = getBike(r.bikeId);
       r.amount = Number(r.amount || 0) + Number(bike.rate || 3500);
       r.status = 'active';
