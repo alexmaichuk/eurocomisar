@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Єврокомісар Львів — швидке оформлення ДТП по європротоколу 24/7</title>
-  <meta name="description" content="Швидкий виклик єврокомісара у Львові та області 24/7. Професійне оформлення ДТП по європротоколу без поліції, штрафів та судів." />
+  <title>BeFast CRM — Оренда електроскутерів</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0f172a;
-      --bg-darker: #090e1a;
-      --bg-light: #f8fafc;
+      --sidebar-bg: #111317;
+      --sidebar-hover: #1e2229;
+      --sidebar-active: #272b33;
+      --bg-main: #f4f5f7;
       --surface: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --accent: #f59e0b;
-      --accent-hover: #d97706;
-      --danger: #ef4444;
-      --border: #e2e8f0;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --border: #e5e7eb;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+      --accent-soft: #fff7ed;
+      --blue: #0284c7;
+      --blue-soft: #e0f2fe;
+      --green: #16a34a;
+      --green-soft: #dcfce7;
+      --red: #dc2626;
+      --red-soft: #fee2e2;
+      --amber: #d97706;
+      --amber-soft: #fef3c7;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
     * {
@@ -30,841 +38,1748 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-main);
       color: var(--text-main);
-      background: var(--surface);
-      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+      font-size: 14px;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    /* Sidebar */
+    .sidebar {
+      width: 245px;
+      background: var(--sidebar-bg);
+      color: #d1d5db;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      user-select: none;
     }
 
-    .container {
-      width: 100%;
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(15, 23, 42, 0.96);
-      backdrop-filter: blur(10px);
+    .brand {
+      padding: 20px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent) 0%, #fb923c 100%);
       color: #fff;
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 74px;
-      gap: 16px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 16px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
+    }
+
+    .brand-title {
+      color: #fff;
+      font-weight: 800;
+      font-size: 16px;
       letter-spacing: -0.02em;
     }
 
-    .logo-badge {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: var(--accent);
-      color: var(--bg-dark);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 1rem;
+    .brand-sub {
+      font-size: 11px;
+      color: #9ca3af;
     }
 
-    nav {
-      display: flex;
-      gap: 24px;
-      font-size: 0.95rem;
-      color: #cbd5e1;
+    .nav-scroll {
+      padding: 14px 10px;
+      flex: 1;
+      overflow-y: auto;
     }
 
-    nav a:hover {
-      color: #fff;
-    }
-
-    .header-phone {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: var(--bg-dark);
+    .nav-group {
+      font-size: 10px;
       font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-      transition: background 0.2s, transform 0.15s;
-      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      padding: 14px 12px 6px;
     }
 
-    .header-phone:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-    }
-
-    /* Hero */
-    .hero {
-      background: radial-gradient(circle at top right, #1e293b 0%, var(--bg-dark) 55%, var(--bg-darker) 100%);
-      color: #fff;
-      padding: 84px 0 92px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .badge-247 {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(245, 158, 11, 0.15);
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      color: #fcd34d;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      background: #22c55e;
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 4.2vw, 3.25rem);
-      line-height: 1.15;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      font-size: 1.12rem;
-      color: #cbd5e1;
-      max-width: 600px;
-      margin-bottom: 32px;
-    }
-
-    .hero-actions {
+    .nav-item {
       display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 36px;
-    }
-
-    .btn {
-      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 15px 26px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1rem;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-radius: 8px;
       cursor: pointer;
+      color: #d1d5db;
+      font-weight: 500;
+      margin-bottom: 2px;
+      transition: all 0.15s;
+    }
+
+    .nav-item:hover {
+      background: var(--sidebar-hover);
+      color: #fff;
+    }
+
+    .nav-item.active {
+      background: var(--sidebar-active);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-badge {
+      background: rgba(255, 255, 255, 0.1);
+      color: #e5e7eb;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .nav-item.active .nav-badge {
+      background: rgba(249, 115, 22, 0.2);
+      color: #fdba74;
+    }
+
+    .sidebar-footer {
+      padding: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    /* Main Content */
+    .main-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .topbar {
+      height: 62px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .global-search {
+      display: flex;
+      align-items: center;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0 12px;
+      width: 340px;
+      max-width: 100%;
+    }
+
+    .global-search input {
       border: none;
-      transition: all 0.2s;
+      background: transparent;
+      padding: 8px;
+      width: 100%;
+      outline: none;
+      font-family: inherit;
+      font-size: 13px;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .location-pill {
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .location-pill strong {
+      color: var(--text-main);
+    }
+
+    .btn-ghost {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-main);
     }
 
     .btn-primary {
       background: var(--accent);
-      color: var(--bg-dark);
-      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+      color: #fff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+      box-shadow: 0 2px 6px rgba(249, 115, 22, 0.25);
     }
 
     .btn-primary:hover {
       background: var(--accent-hover);
-      transform: translateY(-2px);
     }
 
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.16);
-    }
-
-    .hero-stats {
+    .user-chip {
       display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-left: 8px;
+      border-left: 1px solid var(--border);
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #f59e0b;
+      color: #fff;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+    }
+
+    /* Page body */
+    .page-content {
+      padding: 24px 28px;
+      max-width: 1400px;
+      width: 100%;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
       flex-wrap: wrap;
-      gap: 28px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .stat-item strong {
-      display: block;
-      font-size: 1.35rem;
-      color: #fff;
-    }
-
-    .stat-item span {
-      font-size: 0.88rem;
-      color: #94a3b8;
-    }
-
-    .hero-card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 20px;
-      padding: 28px;
-      backdrop-filter: blur(12px);
-    }
-
-    .hero-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 14px;
-      color: #fff;
-    }
-
-    .hero-checklist {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
       gap: 12px;
-      margin-bottom: 24px;
-      color: #e2e8f0;
-      font-size: 0.95rem;
     }
 
-    .hero-checklist li {
+    .page-title {
       display: flex;
-      align-items: flex-start;
+      align-items: baseline;
       gap: 10px;
     }
 
-    .check-icon {
-      color: var(--accent);
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .hero-card-phone {
-      display: block;
-      text-align: center;
-      background: #fff;
-      color: var(--bg-dark);
-      padding: 14px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 1.15rem;
-    }
-
-    .hero-card-phone:hover {
-      background: #f1f5f9;
-    }
-
-    /* Sections */
-    section {
-      padding: 80px 0;
-    }
-
-    .section-light {
-      background: var(--bg-light);
-    }
-
-    .section-head {
-      max-width: 720px;
-      margin-bottom: 48px;
-    }
-
-    .section-tag {
-      display: inline-block;
-      color: var(--accent-hover);
+    .page-title h1 {
+      font-size: 24px;
       font-weight: 700;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 10px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(1.65rem, 3vw, 2.35rem);
-      font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 14px;
-      line-height: 1.2;
     }
 
-    .section-head p {
+    .page-count {
       color: var(--text-muted);
-      font-size: 1.05rem;
+      font-size: 15px;
+      font-weight: 500;
     }
 
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 36px;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      font-size: 1.02rem;
-    }
-
-    .contact-box {
-      background: var(--bg-dark);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: var(--shadow);
-    }
-
-    .contact-box h3 {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-    }
-
-    .contact-box p {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      margin-bottom: 22px;
-    }
-
-    .big-phone {
-      display: block;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 18px;
-    }
-
-    /* Steps */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    /* Sub-tabs */
+    .tabs-bar {
+      display: flex;
+      align-items: center;
       gap: 22px;
-    }
-
-    .step-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 26px 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .step-num {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(245, 158, 11, 0.14);
-      color: var(--accent-hover);
-      font-weight: 800;
-      font-size: 1.1rem;
-      display: grid;
-      place-items: center;
+      border-bottom: 1px solid var(--border);
       margin-bottom: 18px;
+      overflow-x: auto;
     }
 
-    .step-card h3 {
-      font-size: 1.08rem;
-      margin-bottom: 10px;
-    }
-
-    .step-card p {
-      font-size: 0.94rem;
+    .tab-btn {
+      padding: 10px 2px;
+      font-size: 13px;
+      font-weight: 600;
       color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    /* Price Banner */
-    .price-banner {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: #fff;
-      border-radius: 24px;
-      padding: 48px 40px;
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      color: var(--text-main);
+      border-bottom-color: var(--accent);
+    }
+
+    .tab-count {
+      background: #e5e7eb;
+      color: #374151;
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 999px;
+    }
+
+    /* Filter toolbar */
+    .toolbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 32px;
+      gap: 12px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
     }
 
-    .price-banner h2 {
-      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
-      margin-bottom: 12px;
+    .search-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      width: 300px;
+      max-width: 100%;
     }
 
-    .price-banner p {
-      color: #cbd5e1;
-      max-width: 600px;
-      font-size: 1.02rem;
+    .search-box input {
+      border: none;
+      padding: 8px;
+      width: 100%;
+      outline: none;
+      font-family: inherit;
+      font-size: 13px;
     }
 
-    /* Europrotocol Info */
-    .info-card {
+    /* Table Card */
+    .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background: #f9fafb;
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: #fafafa;
+    }
+
+    .rental-id {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .rental-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .client-name {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .client-meta {
+      font-size: 12px;
+      color: var(--blue);
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bike-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .bike-spec {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-active {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .badge-overdue {
+      background: var(--red-soft);
+      color: var(--red);
+    }
+
+    .badge-pending {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .badge-done {
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .badge-free {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .amount {
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .amount-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .actions-cell {
+      display: flex;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
+    .icon-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 5px 9px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .icon-btn:hover {
+      background: #f3f4f6;
+    }
+
+    .icon-btn.success {
+      color: var(--green);
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+    }
+
+    .icon-btn.danger {
+      color: var(--red);
+      border-color: #fecaca;
+      background: #fef2f2;
+    }
+
+    /* Dashboard KPIs */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
       box-shadow: var(--shadow);
     }
 
-    .info-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 14px;
-    }
-
-    .info-card p {
+    .kpi-label {
       color: var(--text-muted);
-      margin-bottom: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 24px;
+    .kpi-value {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
-    .benefit-item {
-      background: var(--bg-light);
-      padding: 18px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-    }
-
-    .benefit-item strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
-    }
-
-    .benefit-item span {
-      font-size: 0.9rem;
+    .kpi-foot {
+      font-size: 12px;
       color: var(--text-muted);
+      margin-top: 6px;
     }
 
-    /* Reviews */
-    .reviews-grid {
+    /* Fleet Grid */
+    .fleet-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 16px;
     }
 
-    .review-card {
+    .bike-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 18px;
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
     }
 
-    .stars {
-      color: var(--accent);
-      font-size: 1.05rem;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .review-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .review-author {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--text-main);
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--bg-darker);
-      color: #94a3b8;
-      padding: 56px 0 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 32px;
-      margin-bottom: 40px;
-    }
-
-    footer h4 {
-      color: #fff;
-      font-size: 1.05rem;
-      margin-bottom: 14px;
-    }
-
-    footer p, footer li {
-      font-size: 0.93rem;
-      margin-bottom: 8px;
-    }
-
-    footer ul {
-      list-style: none;
-    }
-
-    footer a:hover {
-      color: var(--accent);
-    }
-
-    .footer-bottom {
-      padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.86rem;
+    .bike-card-top {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .bike-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .bike-meta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 24, 39, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--surface);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .modal-head {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-head h2 {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .modal-body {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
 
-    /* Floating Call Button */
-    .floating-call {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 99;
-      background: #22c55e;
-      color: #fff;
-      padding: 14px 20px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.2s;
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
 
-    .floating-call:hover {
-      transform: scale(1.05);
+    .field label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
     }
 
-    /* Responsive */
-    @media (max-width: 960px) {
-      .hero-grid, .about-grid, .footer-grid {
-        grid-template-columns: 1fr;
+    .field input, .field select, .field textarea {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 11px;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .modal-foot {
+      padding: 14px 22px;
+      background: #f9fafb;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--text-muted);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
       }
-      .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .sidebar {
+        width: 100%;
       }
-      .reviews-grid, .benefits-grid {
-        grid-template-columns: 1fr;
+      .nav-scroll {
+        display: flex;
+        overflow-x: auto;
+        gap: 6px;
+        padding: 10px;
       }
-      nav {
+      .nav-group, .sidebar-footer {
         display: none;
       }
-    }
-
-    @media (max-width: 560px) {
-      .steps-grid {
-        grid-template-columns: 1fr;
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-      .hero {
-        padding: 56px 0 64px;
-      }
-      .price-banner {
-        padding: 32px 24px;
-      }
-      .header-phone {
-        padding: 8px 12px;
-        font-size: 0.85rem;
+      .global-search, .location-pill {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ХЕДЕР -->
-  <header>
-    <div class="container header-inner">
-      <a href="#" class="logo">
-        <span class="logo-badge">ЄК</span>
-        <span>Єврокомісар Львів</span>
-      </a>
-      <nav>
-        <a href="#about">Про службу</a>
-        <a href="#steps">Як працюємо</a>
-        <a href="#price">Ціна</a>
-        <a href="#europrotocol">Європротокол</a>
-        <a href="#reviews">Відгуки</a>
-      </nav>
-      <a href="tel:+380990000000" class="header-phone">📞 +38 (099) 000-00-00</a>
-    </div>
-  </header>
-
-  <!-- ГОЛОВНИЙ ЕКРАН -->
-  <section class="hero">
-    <div class="container hero-grid">
+  <!-- ЛІВЕ МЕНЮ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">BF</div>
       <div>
-        <div class="badge-247">
-          <span class="dot"></span>
-          Працюємо 24/7 у Львові та області
-        </div>
-        <h1>Єврокомісар у Львові — <span>швидке оформлення ДТП</span> по європротоколу</h1>
-        <p class="hero-sub">
-          Оформимо ДТП швидко, грамотно та без поліції, штрафів і судів. Оперативний виїзд на місце пригоди та повний пакет документів для страхової компанії.
-        </p>
-        <div class="hero-actions">
-          <a href="tel:+380990000000" class="btn btn-primary">📞 Викликати єврокомісара</a>
-          <a href="https://t.me/your_telegram" target="_blank" class="btn btn-outline">✈️ Написати в Telegram</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <strong>15–20 хв</strong>
-            <span>Середній час доїзду</span>
-          </div>
-          <div class="stat-item">
-            <strong>24/7</strong>
-            <span>Без вихідних та свят</span>
-          </div>
-          <div class="stat-item">
-            <strong>Без штрафів</strong>
-            <span>Права залишаються у вас</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <h3>Що входить у виїзд комісара:</h3>
-        <ul class="hero-checklist">
-          <li><span class="check-icon">✓</span> Оперативний приїзд на місце ДТП у Львові та області</li>
-          <li><span class="check-icon">✓</span> Професійна фото- та відеофіксація обставин і пошкоджень</li>
-          <li><span class="check-icon">✓</span> Правильне складання схеми ДТП та заповнення європротоколу</li>
-          <li><span class="check-icon">✓</span> Консультація щодо подальших дій та подачі у страхову</li>
-        </ul>
-        <a href="tel:+380990000000" class="hero-card-phone">+38 (099) 000-00-00</a>
+        <div class="brand-title">BeFast CRM</div>
+        <div class="brand-sub">Оренда електроскутерів</div>
       </div>
     </div>
-  </section>
 
-  <!-- ПРО СЛУЖБУ -->
-  <section id="about">
-    <div class="container about-grid">
-      <div class="about-text">
-        <div class="section-head" style="margin-bottom: 24px;">
-          <span class="section-tag">Про нас</span>
-          <h2>Служба аварійних єврокомісарів у Львові</h2>
-        </div>
-        <p>
-          <strong>Аварійний комісар</strong> — це досвідчений фахівець у сфері дорожньо-транспортних пригод, який бере на себе всю юридичну й технічну частину оформлення аварії на місці.
-        </p>
-        <p>
-          Вам не потрібно годинами чекати патрульну поліцію, ризикувати отримати штраф чи вилучення водійського посвідчення. Ми проводимо детальний огляд місця події, робимо правильну фотофіксацію та заповнюємо європротокол відповідно до всіх вимог страхових компаній.
-        </p>
-        <p>
-          У результаті обидва учасники ДТП отримують повний і правильно оформлений пакет документів для отримання страхової виплати.
-        </p>
+    <div class="nav-scroll">
+      <div class="nav-item" data-view="dashboard" onclick="switchView('dashboard')">
+        <span class="nav-left">📊 Дашборд</span>
       </div>
 
-      <div class="contact-box">
-        <h3>Потрапили в ДТП?</h3>
-        <p>Не панікуйте та не переставляйте авто до фіксації. Зателефонуйте нам — ми підкажемо перші кроки та одразу виїдемо на місце.</p>
-        <a href="tel:+380990000000" class="big-phone">+38 (099) 000-00-00</a>
-        <a href="tel:+380990000000" class="btn btn-primary" style="width: 100%;">Зателефонувати зараз</a>
+      <div class="nav-group">Операції</div>
+      <div class="nav-item active" data-view="rentals" onclick="switchView('rentals')">
+        <span class="nav-left">⚡ Оренди</span>
+        <span class="nav-badge" id="navRentalsCount">0</span>
       </div>
-    </div>
-  </section>
-
-  <!-- ЯК ПРАЦЮЄМО -->
-  <section id="steps" class="section-light">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">Алгоритм дій</span>
-        <h2>Як працює єврокомісар по ДТП у Львові</h2>
-        <p>Увесь процес займає в середньому 20–30 хвилин з моменту приїзду фахівця.</p>
+      <div class="nav-item" data-view="clients" onclick="switchView('clients')">
+        <span class="nav-left">👤 Клієнти</span>
+        <span class="nav-badge" id="navClientsCount">0</span>
       </div>
 
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-num">01</div>
-          <h3>Виклик єврокомісара</h3>
-          <p>Ви телефонуєте на нашу лінію 24/7, повідомляєте локацію, і вільний комісар одразу вирушає до вас.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">02</div>
-          <h3>Фіксація обставин</h3>
-          <p>Фахівець виконує детальну фото- та відеофіксацію місця ДТП, дорожньої обстановки та пошкоджень авто.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">03</div>
-          <h3>Оформлення ДТП</h3>
-          <p>Складаємо точну схему пригоди та безпомилково заповнюємо європротокол відповідно до закону.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">04</div>
-          <h3>Готові документи</h3>
-          <p>Ви отримуєте готовий пакет документів та чітку інструкцію, як подати заяву у страхову компанію.</p>
-        </div>
+      <div class="nav-group">Парк</div>
+      <div class="nav-item" data-view="bikes" onclick="switchView('bikes')">
+        <span class="nav-left">🛵 Скутери</span>
+        <span class="nav-badge" id="navBikesCount">0</span>
+      </div>
+      <div class="nav-item" data-view="service" onclick="switchView('service')">
+        <span class="nav-left">🔧 Сервіс / ТО</span>
+      </div>
+
+      <div class="nav-group">Фінанси</div>
+      <div class="nav-item" data-view="finance" onclick="switchView('finance')">
+        <span class="nav-left">💰 Каса та виторг</span>
       </div>
     </div>
-  </section>
 
-  <!-- ЦІНА -->
-  <section id="price">
-    <div class="container">
-      <div class="price-banner">
-        <div>
-          <h2>Яка ціна виклику єврокомісара у Львові?</h2>
-          <p>
-            Вартість оформлення ДТП по європротоколу залежить від локації (Львів чи виїзд в область) та складності ситуації. Зателефонуйте нам 24/7 — і ми одразу назвемо точну фіксовану ціну без прихованих доплат.
-          </p>
-        </div>
-        <a href="tel:+380990000000" class="btn btn-primary">📞 Дізнатися точну ціну</a>
-      </div>
+    <div class="sidebar-footer">
+      Дані зберігаються локально в браузері. Роби бекап кнопкою «Експорт».
     </div>
-  </section>
+  </aside>
 
-  <!-- ЄВРОПРОТОКОЛ -->
-  <section id="europrotocol" class="section-light">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">Корисна інформація</span>
-        <h2>Що таке оформлення ДТП по європротоколу?</h2>
+  <!-- ОСНОВНА ЧАСТИНА -->
+  <div class="main-wrap">
+    <header class="topbar">
+      <div class="global-search">
+        <span>🔍</span>
+        <input type="text" id="topSearchInput" placeholder="Пошук клієнта, телефону, скутера..." oninput="handleGlobalSearch(this.value)">
       </div>
 
-      <div class="info-card">
-        <h3>Швидке врегулювання без поліції та судів</h3>
-        <p>
-          Європротокол — це офіційний бланк повідомлення про ДТП, який заповнюється водіями-учасниками на місці аварії без виклику поліції. Після заповнення документ подається до страхової компанії для отримання грошової компенсації.
-        </p>
-        <p>
-          Головна умова: у ДТП немає травмованих, обидва водії тверезі, мають чинні поліси ОСЦПВ та дійшли згоди щодо обставин пригоди.
-        </p>
-
-        <div class="benefits-grid">
-          <div class="benefit-item">
-            <strong>Без штрафу та суду</strong>
-            <span>Винуватець ДТП не сплачує адміністративний штраф і не ходить на судові засідання.</span>
-          </div>
-          <div class="benefit-item">
-            <strong>Права залишаються з вами</strong>
-            <span>Поліція не вилучає водійське посвідчення на період розгляду справи.</span>
-          </div>
-          <div class="benefit-item">
-            <strong>Економія часу</strong>
-            <span>Ви звільняєте дорогу та повертаєтесь до своїх справ за 20–30 хвилин.</span>
+      <div class="topbar-right">
+        <div class="location-pill">Точка: <strong>Львів • Шевченківський р-н</strong></div>
+        <button class="btn-ghost" onclick="exportBackup()" title="Завантажити резервну копію бази">⬇️ Експорт</button>
+        <label class="btn-ghost" style="cursor:pointer;" title="Відновити базу з файлу">
+          ⬆️ Імпорт
+          <input type="file" accept=".json" style="display:none" onchange="importBackup(event)">
+        </label>
+        <div class="user-chip">
+          <div class="avatar">ОМ</div>
+          <div style="font-size:12px; line-height:1.2;">
+            <strong>Олександр</strong><br>
+            <span style="color:var(--text-muted)">Власник</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- ВІДГУКИ -->
-  <section id="reviews">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">Відгуки</span>
-        <h2>Що кажуть наші клієнти</h2>
-        <p>Реальні враження водіїв, яким ми допомогли швидко та спокійно оформити ДТП у Львові.</p>
-      </div>
+    <main class="page-content">
 
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p>«Потрапила в ДТП на проспекті Чорновола, дуже розгубилася. Викликала єврокомісара — приїхав за 15 хвилин, усе спокійно пояснив, оформив документи і підказав, як подати заяву в страхову. Щиро рекомендую!»</p>
+      <!-- 1. ОРЕНДИ -->
+      <section id="view-rentals">
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Оренди</h1>
+            <span class="page-count" id="rentalsHeaderCount">0</span>
           </div>
-          <div class="review-author">Олена, м. Львів</div>
+          <button class="btn-primary" onclick="openRentalModal()">+ Нова оренда</button>
         </div>
 
-        <div class="review-card">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p>«Дуже виручили! Поспішав на важливу зустріч, а тут невелика аварія на перехресті. Комісар приїхав максимально швидко, за 20 хвилин усе зафіксували та оформили без поліції. Супер сервіс!»</p>
+        <div class="tabs-bar">
+          <div class="tab-btn active" data-tab="all" onclick="setRentalTab('all')">
+            Всі записи <span class="tab-count" id="tabCountAll">0</span>
           </div>
-          <div class="review-author">Олег, м. Львів</div>
+          <div class="tab-btn" data-tab="active" onclick="setRentalTab('active')">
+            Активні <span class="tab-count" id="tabCountActive">0</span>
+          </div>
+          <div class="tab-btn" data-tab="overdue" onclick="setRentalTab('overdue')">
+            Прострочені / Сьогодні <span class="tab-count" id="tabCountOverdue">0</span>
+          </div>
+          <div class="tab-btn" data-tab="pending" onclick="setRentalTab('pending')">
+            Чекають оплати <span class="tab-count" id="tabCountPending">0</span>
+          </div>
+          <div class="tab-btn" data-tab="done" onclick="setRentalTab('done')">
+            Завершені <span class="tab-count" id="tabCountDone">0</span>
+          </div>
         </div>
 
-        <div class="review-card">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p>«Винуватець ДТП був я, тому викликали аварійного комісара. Усе оформили грамотно, страхова прийняла документи без жодних зауважень. Залишився з правами, без штрафів і зайвих нервів.»</p>
+        <div class="toolbar">
+          <div class="search-box">
+            <span>🔎</span>
+            <input type="text" id="rentalFilterInput" placeholder="ПІБ, Telegram, номер договору або скутер..." oninput="renderRentals()">
           </div>
-          <div class="review-author">Сергій, м. Львів</div>
+          <div style="font-size:12px; color:var(--text-muted);">
+            Натисни <strong>«Продовжити +7д»</strong> для швидкої пролонгації тижневої оренди кур'єру
+          </div>
         </div>
+
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Оренда</th>
+                  <th>Клієнт (Кур'єр)</th>
+                  <th>Скутер та АКБ</th>
+                  <th>Початок</th>
+                  <th>Повернення / Оплата</th>
+                  <th>Статус</th>
+                  <th>Сума</th>
+                  <th style="text-align:right;">Дії</th>
+                </tr>
+              </thead>
+              <tbody id="rentalsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ДАШБОРД -->
+      <section id="view-dashboard" class="hidden">
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Дашборд</h1>
+          </div>
+          <button class="btn-primary" onclick="openRentalModal()">+ Нова оренда</button>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">АКТИВНИХ ОРЕНД</div>
+            <div class="kpi-value" id="kpiActiveRentals">0</div>
+            <div class="kpi-foot" id="kpiFleetUtil">З 0 скутерів у парку</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">ВІЛЬНІ СКУТЕРИ</div>
+            <div class="kpi-value" style="color:var(--green);" id="kpiFreeBikes">0</div>
+            <div class="kpi-foot">Готові до видачі</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">ПОТРЕБУЮТЬ ОПЛАТИ / ПРОСТРОЧЕНІ</div>
+            <div class="kpi-value" style="color:var(--red);" id="kpiAlertRentals">0</div>
+            <div class="kpi-foot">Контроль продовження</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">ЗАГАЛЬНИЙ ВИТОРГ (У БАЗІ)</div>
+            <div class="kpi-value" id="kpiTotalRevenue">0 ₴</div>
+            <div class="kpi-foot" id="kpiDepositHeld">Застав на руках: 0 ₴</div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <h3 style="margin-bottom:14px; font-size:16px;">Найближчі повернення та оплати</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Договір</th>
+                  <th>Клієнт</th>
+                  <th>Скутер</th>
+                  <th>Дата закінчення</th>
+                  <th>Залишилось</th>
+                  <th>Сума</th>
+                </tr>
+              </thead>
+              <tbody id="dashboardUpcomingBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. СКУТЕРИ (ПАРК) -->
+      <section id="view-bikes" class="hidden">
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Парк електроскутерів</h1>
+            <span class="page-count" id="bikesHeaderCount">0</span>
+          </div>
+          <button class="btn-primary" onclick="openBikeModal()">+ Додати скутер</button>
+        </div>
+        <div class="fleet-grid" id="fleetGrid"></div>
+      </section>
+
+      <!-- 4. КЛІЄНТИ -->
+      <section id="view-clients" class="hidden">
+        <div class="page-header">
+          <div class="page-title">
+            <h1>База клієнтів (Кур'єри)</h1>
+            <span class="page-count" id="clientsHeaderCount">0</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ПІБ клієнта</th>
+                  <th>Телефон</th>
+                  <th>Telegram</th>
+                  <th>Кількість оренд</th>
+                  <th>Сплачено всього</th>
+                  <th>Поточний скутер</th>
+                </tr>
+              </thead>
+              <tbody id="clientsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. СЕРВІС / ТО -->
+      <section id="view-service" class="hidden">
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Сервіс та технічне обслуговування</h1>
+          </div>
+          <button class="btn-primary" onclick="openServiceModal()">+ Запис на ТО / ремонт</button>
+        </div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Дата</th>
+                  <th>Скутер</th>
+                  <th>Опис робіт (гума, підшипники, гальма, АКБ)</th>
+                  <th>Витрати</th>
+                  <th style="text-align:right;">Дії</th>
+                </tr>
+              </thead>
+              <tbody id="serviceTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. ФІНАНСИ -->
+      <section id="view-finance" class="hidden">
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Фінанси та каса</h1>
+          </div>
+        </div>
+        <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="kpi-card">
+            <div class="kpi-label">ДОХІД ВІД ОРЕНДИ</div>
+            <div class="kpi-value" style="color:var(--green);" id="finIncome">0 ₴</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">ВИТРАТИ НА СЕРВІС / ЗАПЧАСТИНИ</div>
+            <div class="kpi-value" style="color:var(--red);" id="finExpense">0 ₴</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">ЧИСТИЙ ПРИБУТОК</div>
+            <div class="kpi-value" id="finNet">0 ₴</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Договір</th>
+                  <th>Клієнт</th>
+                  <th>Період</th>
+                  <th>Статус оплати</th>
+                  <th>Застава</th>
+                  <th>Сума оренди</th>
+                </tr>
+              </thead>
+              <tbody id="financeTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- МОДАЛКА: НОВА ОРЕНДА -->
+  <div class="modal-backdrop" id="rentalModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2>Нова оренда електроскутера</h2>
+        <button class="close-btn" onclick="closeModal('rentalModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <label>Електроскутер *</label>
+          <select id="rBikeId"></select>
+        </div>
+        <div class="field">
+          <label>ПІБ клієнта (кур'єра) *</label>
+          <input type="text" id="rClientName" placeholder="Наприклад: Коваленко Максим Ігорович">
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Телефон *</label>
+            <input type="text" id="rClientPhone" placeholder="+380 67 000 00 00">
+          </div>
+          <div class="field">
+            <label>Telegram (@нікнейм)</label>
+            <input type="text" id="rClientTg" placeholder="@username">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Дата початку *</label>
+            <input type="date" id="rStartDate">
+          </div>
+          <div class="field">
+            <label>Дата повернення / наступної оплати *</label>
+            <input type="date" id="rEndDate">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Сума оренди (грн) *</label>
+            <input type="number" id="rAmount" value="3500">
+          </div>
+          <div class="field">
+            <label>Застава (грн)</label>
+            <input type="number" id="rDeposit" value="2000">
+          </div>
+        </div>
+        <div class="field">
+          <label>Статус оплати</label>
+          <select id="rPayStatus">
+            <option value="active">Оплачено (Активна)</option>
+            <option value="pending">Чекає оплати</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" onclick="closeModal('rentalModal')">Скасувати</button>
+        <button class="btn-primary" onclick="saveRental()">Створити оренду</button>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ФУТЕР -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>Єврокомісар Львів</h4>
-          <p>Аварійна служба з оформлення ДТП по європротоколу без поліції, штрафів та судів. Працюємо цілодобово 24/7 по Львову та Львівській області.</p>
+  <!-- МОДАЛКА: ДОДАТИ СКУТЕР -->
+  <div class="modal-backdrop" id="bikeModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2>Додати скутер у парк</h2>
+        <button class="close-btn" onclick="closeModal('bikeModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="field">
+            <label>Бортовий номер *</label>
+            <input type="text" id="bNum" placeholder="№6">
+          </div>
+          <div class="field">
+            <label>Модель *</label>
+            <input type="text" id="bModel" value="Crosser CR-21">
+          </div>
         </div>
-        <div>
-          <h4>Навігація</h4>
-          <ul>
-            <li><a href="#about">Про службу</a></li>
-            <li><a href="#steps">Як працюємо</a></li>
-            <li><a href="#price">Ціна виклику</a></li>
-            <li><a href="#europrotocol">Про європротокол</a></li>
-            <li><a href="#reviews">Відгуки</a></li>
-          </ul>
+        <div class="form-row">
+          <div class="field">
+            <label>Батарея (АКБ)</label>
+            <input type="text" id="bBattery" placeholder="94 Ah або 117 Ah">
+          </div>
+          <div class="field">
+            <label>Тариф за тиждень (грн)</label>
+            <input type="number" id="bRate" value="3500">
+          </div>
         </div>
-        <div>
-          <h4>Контакти 24/7</h4>
-          <ul>
-            <li>📞 <a href="tel:+380990000000">+38 (099) 000-00-00</a></li>
-            <li>✈️ <a href="https://t.me/your_telegram" target="_blank">Telegram</a></li>
-            <li>📍 м. Львів та Львівська область</li>
-          </ul>
+        <div class="field">
+          <label>Примітка (гума, комплектація, замок)</label>
+          <input type="text" id="bNote" placeholder="Kenda K701 зима, 2 ключі, зарядка">
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>© 2026 Єврокомісар Львів. Всі права захищено.</span>
-        <span>Швидке оформлення ДТП 24/7</span>
+      <div class="modal-foot">
+        <button class="btn-ghost" onclick="closeModal('bikeModal')">Скасувати</button>
+        <button class="btn-primary" onclick="saveBike()">Зберегти скутер</button>
       </div>
     </div>
-  </footer>
+  </div>
 
-  <!-- ПЛАВАЮЧА КНОПКА ДЗВІНКА -->
-  <a href="tel:+380990000000" class="floating-call">📞 Викликати 24/7</a>
+  <!-- МОДАЛКА: СЕРВІС -->
+  <div class="modal-backdrop" id="serviceModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2>Новий запис сервісу / ТО</h2>
+        <button class="close-btn" onclick="closeModal('serviceModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="field">
+            <label>Скутер</label>
+            <select id="sBikeId"></select>
+          </div>
+          <div class="field">
+            <label>Дата</label>
+            <input type="date" id="sDate">
+          </div>
+        </div>
+        <div class="field">
+          <label>Що зроблено *</label>
+          <input type="text" id="sDesc" placeholder="Заміна підшипників рульової, колодки">
+        </div>
+        <div class="field">
+          <label>Сума витрат (грн)</label>
+          <input type="number" id="sCost" value="0">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" onclick="closeModal('serviceModal')">Скасувати</button>
+        <button class="btn-primary" onclick="saveService()">Додати запис</button>
+      </div>
+    </div>
+  </div>
 
+  <script>
+    const STORAGE_KEY = 'befast_crm_data_v1';
+
+    const defaultData = {
+      nextRentalNum: 6,
+      bikes: [
+        { id: 'b1', num: '№1', model: 'Crosser CR-21', battery: '117 Ah', rate: 3700, note: 'Kenda K701 зима, багажник Glovo/Bolt' },
+        { id: 'b2', num: '№2', model: 'Crosser CR-21', battery: '117 Ah', rate: 3700, note: 'Kenda K701 зима, 2 ключі' },
+        { id: 'b3', num: '№3', model: 'Crosser CR-21', battery: '94 Ah', rate: 3500, note: 'Kenda K701 зима, зарядка 10A' },
+        { id: 'b4', num: '№4', model: 'Crosser CR-21', battery: '94 Ah', rate: 3500, note: 'Kenda K701 зима, тримач телефону' },
+        { id: 'b5', num: '№5', model: 'Crosser CR-21', battery: '94 Ah', rate: 3500, note: 'Kenda K701 зима, резервний' }
+      ],
+      rentals: [
+        {
+          id: 'r1',
+          number: '№5',
+          bikeId: 'b1',
+          clientName: 'Мельник Тарас Васильович',
+          clientPhone: '+380 67 412 88 19',
+          clientTg: '@taras_lviv',
+          startDate: offsetDate(-5),
+          endDate: offsetDate(2),
+          amount: 3700,
+          deposit: 2000,
+          status: 'active'
+        },
+        {
+          id: 'r2',
+          number: '№4',
+          bikeId: 'b2',
+          clientName: 'Ковальчук Андрій Олегович',
+          clientPhone: '+380 93 551 20 44',
+          clientTg: '@andriy_courier',
+          startDate: offsetDate(-7),
+          endDate: offsetDate(0),
+          amount: 3700,
+          deposit: 2000,
+          status: 'active'
+        },
+        {
+          id: 'r3',
+          number: '№3',
+          bikeId: 'b3',
+          clientName: 'Савчук Дмитро Петрович',
+          clientPhone: '+380 50 890 11 32',
+          clientTg: '@dima_bolt',
+          startDate: offsetDate(-4),
+          endDate: offsetDate(3),
+          amount: 3500,
+          deposit: 2000,
+          status: 'pending'
+        }
+      ],
+      services: [
+        {
+          id: 's1',
+          bikeId: 'b1',
+          date: offsetDate(-10),
+          desc: 'Встановлення зимової гуми Kenda K701 120/70-12 + балансування',
+          cost: 1400
+        }
+      ]
+    };
+
+    let db = loadData();
+    let currentTab = 'all';
+
+    function offsetDate(days) {
+      const d = new Date();
+      d.setDate(d.getDate() + days);
+      return d.toISOString().split('T')[0];
+    }
+
+    function formatDateUA(iso) {
+      if (!iso) return '—';
+      const [y, m, d] = iso.split('-');
+      return `${d}.${m}.${y}`;
+    }
+
+    function daysDiff(endIso) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const end = new Date(endIso);
+      end.setHours(0, 0, 0, 0);
+      return Math.round((end - today) / (1000 * 60 * 60 * 24));
+    }
+
+    function loadData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {}
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultData));
+      return JSON.parse(JSON.stringify(defaultData));
+    }
+
+    function saveData() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+      renderAll();
+    }
+
+    function getBike(id) {
+      return db.bikes.find(b => b.id === id) || { num: '—', model: 'Видалений скутер', battery: '' };
+    }
+
+    function isBikeBusy(bikeId) {
+      return db.rentals.some(r => r.bikeId === bikeId && r.status !== 'done');
+    }
+
+    function getComputedStatus(r) {
+      if (r.status === 'done') return 'done';
+      if (r.status === 'pending') return 'pending';
+      const left = daysDiff(r.endDate);
+      if (left <= 0) return 'overdue';
+      return 'active';
+    }
+
+    function switchView(view) {
+      document.querySelectorAll('.nav-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.view === view);
+      });
+      ['rentals', 'dashboard', 'bikes', 'clients', 'service', 'finance'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.toggle('hidden', v !== view);
+      });
+      renderAll();
+    }
+
+    function setRentalTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tab);
+      });
+      renderRentals();
+    }
+
+    function handleGlobalSearch(val) {
+      switchView('rentals');
+      document.getElementById('rentalFilterInput').value = val;
+      renderRentals();
+    }
+
+    function renderRentals() {
+      const q = (document.getElementById('rentalFilterInput').value || '').toLowerCase().trim();
+      const tbody = document.getElementById('rentalsTableBody');
+
+      let countAll = db.rentals.length;
+      let countActive = 0;
+      let countOverdue = 0;
+      let countPending = 0;
+      let countDone = 0;
+
+      db.rentals.forEach(r => {
+        const st = getComputedStatus(r);
+        if (st === 'active') countActive++;
+        if (st === 'overdue') countOverdue++;
+        if (st === 'pending') countPending++;
+        if (st === 'done') countDone++;
+      });
+
+      document.getElementById('tabCountAll').textContent = countAll;
+      document.getElementById('tabCountActive').textContent = countActive;
+      document.getElementById('tabCountOverdue').textContent = countOverdue;
+      document.getElementById('tabCountPending').textContent = countPending;
+      document.getElementById('tabCountDone').textContent = countDone;
+      document.getElementById('rentalsHeaderCount').textContent = countAll;
+
+      const filtered = db.rentals.filter(r => {
+        const st = getComputedStatus(r);
+        if (currentTab !== 'all' && st !== currentTab) return false;
+        if (!q) return true;
+        const bike = getBike(r.bikeId);
+        const hay = `${r.number} ${r.clientName} ${r.clientPhone} ${r.clientTg} ${bike.num} ${bike.model}`.toLowerCase();
+        return hay.includes(q);
+      });
+
+      if (!filtered.length) {
+        tbody.innerHTML = `<tr><td colspan="8" class="empty-state">Записів за цим фільтром поки немає</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(r => {
+        const bike = getBike(r.bikeId);
+        const st = getComputedStatus(r);
+        const left = daysDiff(r.endDate);
+
+        let badgeHtml = '';
+        if (st === 'active') badgeHtml = `<span class="badge badge-active">Активна (ще ${left} дн.)</span>`;
+        if (st === 'overdue') {
+          const label = left === 0 ? 'Сьогодні оплата' : `Прострочено ${Math.abs(left)} дн.`;
+          badgeHtml = `<span class="badge badge-overdue">${label}</span>`;
+        }
+        if (st === 'pending') badgeHtml = `<span class="badge badge-pending">Чекає оплати</span>`;
+        if (st === 'done') badgeHtml = `<span class="badge badge-done">Завершена</span>`;
+
+        const tgLink = r.clientTg
+          ? `<a href="https://t.me/${r.clientTg.replace('@', '')}" target="_blank">${r.clientTg}</a>`
+          : '';
+
+        return `
+          <tr>
+            <td>
+              <div class="rental-id">${r.number}</div>
+              <div class="rental-sub">Прокат</div>
+            </td>
+            <td>
+              <div class="client-name">${r.clientName}</div>
+              <div class="client-meta">
+                <a href="tel:${r.clientPhone}">${r.clientPhone}</a>
+                ${tgLink}
+              </div>
+            </td>
+            <td>
+              <div class="bike-pill">⚡ Скутер ${bike.num} • ${bike.model}</div>
+              <div class="bike-spec">АКБ: ${bike.battery}</div>
+            </td>
+            <td>${formatDateUA(r.startDate)}</td>
+            <td><strong>${formatDateUA(r.endDate)}</strong></td>
+            <td>${badgeHtml}</td>
+            <td>
+              <div class="amount">${Number(r.amount).toLocaleString('uk-UA')} ₴</div>
+              <div class="amount-sub">Застава: ${Number(r.deposit || 0).toLocaleString('uk-UA')} ₴</div>
+            </td>
+            <td>
+              <div class="actions-cell">
+                ${st === 'pending' ? `<button class="icon-btn success" onclick="markPaid('${r.id}')">✓ Оплачено</button>` : ''}
+                ${st !== 'done' ? `<button class="icon-btn" onclick="extendRental('${r.id}', 7)">+7 дн.</button>` : ''}
+                ${st !== 'done' ? `<button class="icon-btn success" onclick="finishRental('${r.id}')">Завершити</button>` : ''}
+                <button class="icon-btn danger" onclick="deleteRental('${r.id}')" title="Видалити">✕</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderDashboard() {
+      const activeRentals = db.rentals.filter(r => r.status !== 'done');
+      const freeBikes = db.bikes.filter(b => !isBikeBusy(b.id));
+      const alerts = activeRentals.filter(r => {
+        const st = getComputedStatus(r);
+        return st === 'overdue' || st === 'pending';
+      });
+
+      const totalRev = db.rentals.reduce((sum, r) => sum + Number(r.amount || 0), 0);
+      const totalDep = activeRentals.reduce((sum, r) => sum + Number(r.deposit || 0), 0);
+
+      document.getElementById('kpiActiveRentals').textContent = activeRentals.length;
+      document.getElementById('kpiFleetUtil').textContent = `З ${db.bikes.length} скутерів у парку`;
+      document.getElementById('kpiFreeBikes').textContent = freeBikes.length;
+      document.getElementById('kpiAlertRentals').textContent = alerts.length;
+      document.getElementById('kpiTotalRevenue').textContent = `${totalRev.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('kpiDepositHeld').textContent = `Застав на руках: ${totalDep.toLocaleString('uk-UA')} ₴`;
+
+      const upcomingBody = document.getElementById('dashboardUpcomingBody');
+      if (!activeRentals.length) {
+        upcomingBody.innerHTML = `<tr><td colspan="6" class="empty-state">Немає активних оренд</td></tr>`;
+        return;
+      }
+
+      const sorted = [...activeRentals].sort((a, b) => a.endDate.localeCompare(b.endDate));
+      upcomingBody.innerHTML = sorted.map(r => {
+        const bike = getBike(r.bikeId);
+        const left = daysDiff(r.endDate);
+        const leftLabel = left < 0 ? `Прострочено на ${Math.abs(left)} дн.` : left === 0 ? 'Сьогодні' : `${left} дн.`;
+        return `
+          <tr>
+            <td><strong>${r.number}</strong></td>
+            <td>${r.clientName} (${r.clientPhone})</td>
+            <td>Скутер ${bike.num} (${bike.battery})</td>
+            <td>${formatDateUA(r.endDate)}</td>
+            <td><strong>${leftLabel}</strong></td>
+            <td><strong>${Number(r.amount).toLocaleString('uk-UA')} ₴</strong></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderBikes() {
+      document.getElementById('bikesHeaderCount').textContent = db.bikes.length;
+      const grid = document.getElementById('fleetGrid');
+      grid.innerHTML = db.bikes.map(b => {
+        const activeRental = db.rentals.find(r => r.bikeId === b.id && r.status !== 'done');
+        const statusHtml = activeRental
+          ? `<span class="badge badge-active">В оренді (${activeRental.number})</span>`
+          : `<span class="badge badge-free">Вільний</span>`;
+
+        return `
+          <div class="bike-card">
+            <div>
+              <div class="bike-card-top">
+                <h3>Скутер ${b.num} • ${b.model}</h3>
+                ${statusHtml}
+              </div>
+              <div class="bike-meta-list" style="margin-top:12px;">
+                <div>🔋 Батарея: <strong>${b.battery}</strong></div>
+                <div>💵 Тариф: <strong>${Number(b.rate).toLocaleString('uk-UA')} ₴ / тиждень</strong></div>
+                <div>📝 ${b.note || 'Без приміток'}</div>
+                ${activeRental ? `<div style="color:var(--blue); margin-top:4px;">👤 Зараз у: <strong>${activeRental.clientName}</strong> до ${formatDateUA(activeRental.endDate)}</div>` : ''}
+              </div>
+            </div>
+            <div style="display:flex; gap:8px; justify-content:space-between; border-top:1px solid var(--border); padding-top:12px;">
+              ${!activeRental ? `<button class="btn-primary" style="padding:7px 12px; font-size:12px;" onclick="openRentalModal('${b.id}')">Здати в оренду</button>` : `<span></span>`}
+              <button class="icon-btn danger" onclick="deleteBike('${b.id}')">Видалити</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderClients() {
+      const map = new Map();
+      db.rentals.forEach(r => {
+        const key = r.clientPhone || r.clientName;
+        if (!map.has(key)) {
+          map.set(key, {
+            name: r.clientName,
+            phone: r.clientPhone,
+            tg: r.clientTg,
+            count: 0,
+            total: 0,
+            currentBike: '—'
+          });
+        }
+        const item = map.get(key);
+        item.count += 1;
+        item.total += Number(r.amount || 0);
+        if (r.status !== 'done') {
+          const b = getBike(r.bikeId);
+          item.currentBike = `Скутер ${b.num}`;
+        }
+      });
+
+      const list = Array.from(map.values());
+      document.getElementById('clientsHeaderCount').textContent = list.length;
+      document.getElementById('navClientsCount').textContent = list.length;
+
+      const tbody = document.getElementById('clientsTableBody');
+      if (!list.length) {
+        tbody.innerHTML = `<tr><td colspan="6" class="empty-state">Клієнтів поки немає</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map(c => `
+        <tr>
+          <td><strong>${c.name}</strong></td>
+          <td><a href="tel:${c.phone}" style="color:var(--blue);">${c.phone}</a></td>
+          <td>${c.tg || '—'}</td>
+          <td>${c.count}</td>
+          <td><strong>${c.total.toLocaleString('uk-UA')} ₴</strong></td>
+          <td>${c.currentBike}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderService() {
+      const tbody = document.getElementById('serviceTableBody');
+      if (!db.services.length) {
+        tbody.innerHTML = `<tr><td colspan="5" class="empty-state">Записів ТО поки немає</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = db.services.map(s => {
+        const b = getBike(s.bikeId);
+        return `
+          <tr>
+            <td>${formatDateUA(s.date)}</td>
+            <td><strong>Скутер ${b.num}</strong> (${b.model})</td>
+            <td>${s.desc}</td>
+            <td><strong>${Number(s.cost).toLocaleString('uk-UA')} ₴</strong></td>
+            <td style="text-align:right;"><button class="icon-btn danger" onclick="deleteService('${s.id}')">✕</button></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderFinance() {
+      const income = db.rentals.reduce((sum, r) => sum + Number(r.amount || 0), 0);
+      const expense = db.services.reduce((sum, s) => sum + Number(s.cost || 0), 0);
+      const net = income - expense;
+
+      document.getElementById('finIncome').textContent = `${income.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('finExpense').textContent = `${expense.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('finNet').textContent = `${net.toLocaleString('uk-UA')} ₴`;
+
+      const tbody = document.getElementById('financeTableBody');
+      tbody.innerHTML = db.rentals.map(r => `
+        <tr>
+          <td><strong>${r.number}</strong></td>
+          <td>${r.clientName}</td>
+          <td>${formatDateUA(r.startDate)} — ${formatDateUA(r.endDate)}</td>
+          <td>${r.status === 'pending' ? '<span class="badge badge-pending">Очікується</span>' : '<span class="badge badge-free">Сплачено</span>'}</td>
+          <td>${Number(r.deposit || 0).toLocaleString('uk-UA')} ₴</td>
+          <td><strong>${Number(r.amount).toLocaleString('uk-UA')} ₴</strong></td>
+        </tr>
+      `).join('');
+    }
+
+    function renderAll() {
+      document.getElementById('navRentalsCount').textContent = db.rentals.filter(r => r.status !== 'done').length;
+      document.getElementById('navBikesCount').textContent = db.bikes.length;
+      renderRentals();
+      renderDashboard();
+      renderBikes();
+      renderClients();
+      renderService();
+      renderFinance();
+    }
+
+    /* Modals & CRUD */
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+
+    function openRentalModal(preselectedBikeId = '') {
+      const select = document.getElementById('rBikeId');
+      select.innerHTML = db.bikes.map(b => {
+        const busy = isBikeBusy(b.id);
+        return `<option value="${b.id}" ${b.id === preselectedBikeId ? 'selected' : ''}>
+          Скутер ${b.num} (${b.model}, ${b.battery}) ${busy ? '— [ЗАЙНЯТИЙ]' : '— [Вільний]'}
+        </option>`;
+      }).join('');
+
+      document.getElementById('rStartDate').value = offsetDate(0);
+      document.getElementById('rEndDate').value = offsetDate(7);
+      document.getElementById('rClientName').value = '';
+      document.getElementById('rClientPhone').value = '';
+      document.getElementById('rClientTg').value = '';
+      openModal('rentalModal');
+    }
+
+    function saveRental() {
+      const bikeId = document.getElementById('rBikeId').value;
+      const clientName = document.getElementById('rClientName').value.trim();
+      const clientPhone = document.getElementById('rClientPhone').value.trim();
+      const clientTg = document.getElementById('rClientTg').value.trim();
+      const startDate = document.getElementById('rStartDate').value;
+      const endDate = document.getElementById('rEndDate').value;
+      const amount = Number(document.getElementById('rAmount').value || 0);
+      const deposit = Number(document.getElementById('rDeposit').value || 0);
+      const status = document.getElementById('rPayStatus').value;
+
+      if (!clientName || !clientPhone || !startDate || !endDate) {
+        alert('Заповни ПІБ клієнта, телефон і дати оренди.');
+        return;
+      }
+
+      db.rentals.unshift({
+        id: 'r_' + Date.now(),
+        number: '№' + db.nextRentalNum++,
+        bikeId,
+        clientName,
+        clientPhone,
+        clientTg,
+        startDate,
+        endDate,
+        amount,
+        deposit,
+        status
+      });
+
+      closeModal('rentalModal');
+      saveData();
+    }
+
+    function extendRental(id, days) {
+      const r = db.rentals.find(x => x.id === id);
+      if (!r) return;
+      const base = new Date(r.endDate);
+      base.setDate(base.getDate() + days);
+      r.endDate = base.toISOString().split('T')[0];
+      const bike = getBike(r.bikeId);
+      r.amount = Number(r.amount || 0) + Number(bike.rate || 3500);
+      r.status = 'active';
+      saveData();
+    }
+
+    function markPaid(id) {
+      const r = db.rentals.find(x => x.id === id);
+      if (r) {
+        r.status = 'active';
+        saveData();
+      }
+    }
+
+    function finishRental(id) {
+      const r = db.rentals.find(x => x.id === id);
+      if (r) {
+        r.status = 'done';
+        saveData();
+      }
+    }
+
+    function deleteRental(id) {
+      if (!confirm('Видалити цей запис оренди?')) return;
+      db.rentals = db.rentals.filter(r => r.id !== id);
+      saveData();
+    }
+
+    function openBikeModal() {
+      document.getElementById('bNum').value = '№' + (db.bikes.length + 1);
+      openModal('bikeModal');
+    }
+
+    function saveBike() {
+      const num = document.getElementById('bNum').value.trim();
+      const model = document.getElementById('bModel').value.trim();
+      const battery = document.getElementById('bBattery').value.trim() || '94 Ah';
+      const rate = Number(document.getElementById('bRate').value || 3500);
+      const note = document.getElementById('bNote').value.trim();
+
+      if (!num || !model) {
+        alert('Вкажи номер і модель скутера.');
+        return;
+      }
+
+      db.bikes.push({
+        id: 'b_' + Date.now(),
+        num,
+        model,
+        battery,
+        rate,
+        note
+      });
+
+      closeModal('bikeModal');
+      saveData();
+    }
+
+    function deleteBike(id) {
+      if (isBikeBusy(id)) {
+        alert('Спочатку заверши активну оренду на цьому скутері.');
+        return;
+      }
+      if (!confirm('Видалити скутер із парку?')) return;
+      db.bikes = db.bikes.filter(b => b.id !== id);
+      saveData();
+    }
+
+    function openServiceModal() {
+      const select = document.getElementById('sBikeId');
+      select.innerHTML = db.bikes.map(b => `<option value="${b.id}">Скутер ${b.num} (${b.model})</option>`).join('');
+      document.getElementById('sDate').value = offsetDate(0);
+      document.getElementById('sDesc').value = '';
+      document.getElementById('sCost').value = '';
+      openModal('serviceModal');
+    }
+
+    function saveService() {
+      const bikeId = document.getElementById('sBikeId').value;
+      const date = document.getElementById('sDate').value;
+      const desc = document.getElementById('sDesc').value.trim();
+      const cost = Number(document.getElementById('sCost').value || 0);
+
+      if (!desc) {
+        alert('Опиши виконані роботи.');
+        return;
+      }
+
+      db.services.unshift({
+        id: 's_' + Date.now(),
+        bikeId,
+        date,
+        desc,
+        cost
+      });
+
+      closeModal('serviceModal');
+      saveData();
+    }
+
+    function deleteService(id) {
+      db.services = db.services.filter(s => s.id !== id);
+      saveData();
+    }
+
+    /* Backup */
+    function exportBackup() {
+      const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `befast-crm-backup-${offsetDate(0)}.json`;
+      a.click();
+    }
+
+    function importBackup(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (parsed.bikes && parsed.rentals) {
+            db = parsed;
+            saveData();
+            alert('Базу успішно відновлено!');
+          } else {
+            alert('Невірний формат файлу.');
+          }
+        } catch {
+          alert('Помилка читання файлу.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    renderAll();
+  </script>
 </body>
 </html>
