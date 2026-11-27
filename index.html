@@ -256,6 +256,34 @@
       background: var(--accent-hover);
     }
 
+    .btn-success {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-danger {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     .user-chip {
       display: flex;
       align-items: center;
@@ -315,6 +343,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .view-switcher {
@@ -533,9 +562,26 @@
       color: var(--green);
     }
 
+    .badge-transfer {
+      background: var(--accent-soft);
+      color: var(--accent-hover);
+    }
+
     .amount {
       font-weight: 700;
       font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .amount-plus {
+      color: var(--green);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .amount-minus {
+      color: var(--red);
+      font-weight: 700;
       white-space: nowrap;
     }
 
@@ -576,6 +622,46 @@
       color: var(--red);
       border-color: #fecaca;
       background: #fef2f2;
+    }
+
+    /* Wallets / Accounts Grid */
+    .wallets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .wallet-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .wallet-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .wallet-name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .wallet-balance {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .wallet-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
     }
 
     /* RENTAL TIMELINE CALENDAR */
@@ -1183,8 +1269,8 @@
             <div class="kpi-foot">Контроль продовження</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-label">ЗАГАЛЬНИЙ ВИТОРГ (У БАЗІ)</div>
-            <div class="kpi-value" id="kpiTotalRevenue">0 ₴</div>
+            <div class="kpi-label">ЗАГАЛЬНИЙ БАЛАНС РАХУНКІВ</div>
+            <div class="kpi-value" id="kpiTotalBalance">0 ₴</div>
             <div class="kpi-foot" id="kpiDepositHeld">Застав на руках: 0 ₴</div>
           </div>
         </div>
@@ -1278,43 +1364,164 @@
       <section id="view-finance" class="hidden">
         <div class="page-header">
           <div class="page-title">
-            <h1>Фінанси та каса</h1>
+            <h1>Фінанси, рахунки та каси</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn-success" onclick="openTxModal('income')">+ Надходження</button>
+            <button class="btn-danger" onclick="openTxModal('expense')">− Витрата</button>
+            <button class="btn-primary" onclick="openTxModal('transfer')">⇄ Переказ між рахунками</button>
+            <button class="btn-ghost" onclick="openWalletModal()">+ Новий рахунок</button>
           </div>
         </div>
+
+        <!-- Куди йдуть / де лежать гроші (рахунки) -->
+        <div class="wallets-grid" id="walletsGrid"></div>
+
+        <!-- Загальні підсумки -->
         <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr);">
           <div class="kpi-card">
-            <div class="kpi-label">ДОХІД ВІД ОРЕНДИ</div>
+            <div class="kpi-label">ВСЬОГО НАДХОДЖЕНЬ</div>
             <div class="kpi-value" style="color:var(--green);" id="finIncome">0 ₴</div>
+            <div class="kpi-foot" id="finRentalsInfo">Включно з оплатами оренд</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-label">ВИТРАТИ НА СЕРВІС / ЗАПЧАСТИНИ</div>
+            <div class="kpi-label">ВСЬОГО ВИТРАТ</div>
             <div class="kpi-value" style="color:var(--red);" id="finExpense">0 ₴</div>
+            <div class="kpi-foot" id="finServiceInfo">Включно із сервісом / ТО</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-label">ЧИСТИЙ ПРИБУТОК</div>
+            <div class="kpi-label">ЗАГАЛЬНИЙ ЗАЛИШОК У КАСАХ</div>
             <div class="kpi-value" id="finNet">0 ₴</div>
+            <div class="kpi-foot">Сума по всіх рахунках</div>
           </div>
         </div>
+
+        <!-- Журнал операцій -->
         <div class="card">
+          <div style="padding:14px 18px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <strong>Журнал фінансових операцій</strong>
+            <div class="search-box" style="width:260px;">
+              <span>🔎</span>
+              <input type="text" id="txFilterInput" placeholder="Категорія, рахунок, опис..." oninput="renderFinance()">
+            </div>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th>Договір</th>
-                  <th>Клієнт</th>
-                  <th>Період</th>
-                  <th>Статус оплати</th>
-                  <th>Застава</th>
-                  <th>Сума оренди</th>
+                  <th>Дата</th>
+                  <th>Тип</th>
+                  <th>Рахунок / Напрямок</th>
+                  <th>Категорія та опис</th>
+                  <th>Сума</th>
+                  <th style="text-align:right;">Дії</th>
                 </tr>
               </thead>
-              <tbody id="financeTableBody"></tbody>
+              <tbody id="financeTxBody"></tbody>
             </table>
           </div>
         </div>
       </section>
 
     </main>
+  </div>
+
+  <!-- МОДАЛКА: ФІНАНСОВА ОПЕРАЦІЯ (+ / - / ПЕРЕКАЗ) -->
+  <div class="modal-backdrop" id="txModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2 id="txModalTitle">Фінансова операція</h2>
+        <button class="close-btn" onclick="closeModal('txModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="field">
+            <label>Тип операції</label>
+            <select id="txType" onchange="toggleTxFields()">
+              <option value="income">+ Надходження (плюс)</option>
+              <option value="expense">− Витрата (мінус)</option>
+              <option value="transfer">⇄ Переказ між рахунками</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Дата</label>
+            <input type="date" id="txDate">
+          </div>
+        </div>
+
+        <div class="form-row" id="txSingleWalletRow">
+          <div class="field">
+            <label id="txWalletLabel">Рахунок *</label>
+            <select id="txWalletId"></select>
+          </div>
+          <div class="field">
+            <label>Категорія / Куди йде</label>
+            <select id="txCategory">
+              <option value="Оренда скутерів">Оренда скутерів</option>
+              <option value="Застава">Застава</option>
+              <option value="Гума / Запчастини">Гума / Запчастини</option>
+              <option value="Гараж / Світло">Гараж / Світло</option>
+              <option value="Резерв / Розвиток">Резерв / Розвиток</option>
+              <option value="Особисті / Вивід">Особисті / Вивід</option>
+              <option value="Інше">Інше</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row hidden" id="txTransferWalletsRow">
+          <div class="field">
+            <label>Звідки переказати *</label>
+            <select id="txFromWalletId"></select>
+          </div>
+          <div class="field">
+            <label>Куди переказати *</label>
+            <select id="txToWalletId"></select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Сума (грн) *</label>
+          <input type="number" id="txAmount" placeholder="Наприклад: 1500" min="1">
+        </div>
+
+        <div class="field">
+          <label>Коментар / призначення</label>
+          <input type="text" id="txNote" placeholder="Наприклад: відклав на зимову гуму Kenda або оплата за гараж">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" onclick="closeModal('txModal')">Скасувати</button>
+        <button class="btn-primary" onclick="saveTx()">Зберегти операцію</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА: НОВИЙ РАХУНОК -->
+  <div class="modal-backdrop" id="walletModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2>Новий рахунок / каса</h2>
+        <button class="close-btn" onclick="closeModal('walletModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <label>Назва рахунку *</label>
+          <input type="text" id="wName" placeholder="Наприклад: Картка Monobank або Запас на АКБ">
+        </div>
+        <div class="field">
+          <label>Початковий залишок (грн)</label>
+          <input type="number" id="wStartBalance" value="0">
+        </div>
+        <div class="field">
+          <label>Примітка (на що йде цей рахунок)</label>
+          <input type="text" id="wNote" placeholder="Наприклад: щоденні витрати, ремонт, резерв">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" onclick="closeModal('walletModal')">Скасувати</button>
+        <button class="btn-primary" onclick="saveWallet()">Створити рахунок</button>
+      </div>
+    </div>
   </div>
 
   <!-- МОДАЛКА: НОВА ОРЕНДА -->
@@ -1363,12 +1570,18 @@
             <input type="number" id="rDeposit" value="2000">
           </div>
         </div>
-        <div class="field">
-          <label>Статус оплати</label>
-          <select id="rPayStatus">
-            <option value="active">Оплачено (Активна)</option>
-            <option value="pending">Чекає оплати</option>
-          </select>
+        <div class="form-row">
+          <div class="field">
+            <label>Статус оплати</label>
+            <select id="rPayStatus">
+              <option value="active">Оплачено (Активна)</option>
+              <option value="pending">Чекає оплати</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Рахунок зарахування</label>
+            <select id="rWalletId"></select>
+          </div>
         </div>
       </div>
       <div class="modal-foot">
@@ -1448,13 +1661,19 @@
             <input type="date" id="sDate">
           </div>
         </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Сума витрат (грн)</label>
+            <input type="number" id="sCost" value="0">
+          </div>
+          <div class="field">
+            <label>З якого рахунку списати</label>
+            <select id="sWalletId"></select>
+          </div>
+        </div>
         <div class="field">
           <label>Що зроблено *</label>
           <input type="text" id="sDesc" placeholder="Заміна підшипників рульової, колодки">
-        </div>
-        <div class="field">
-          <label>Сума витрат (грн)</label>
-          <input type="number" id="sCost" value="0">
         </div>
       </div>
       <div class="modal-foot">
@@ -1465,10 +1684,44 @@
   </div>
 
   <script>
-    const STORAGE_KEY = 'befast_crm_data_v1';
+    const STORAGE_KEY = 'befast_crm_data_v2';
 
     const defaultData = {
       nextRentalNum: 6,
+      wallets: [
+        { id: 'w_cash', name: 'Готівка (каса)', startBalance: 0, note: 'Оплати готівкою та поточні витрати' },
+        { id: 'w_card', name: 'Картка / Перекази', startBalance: 0, note: 'Безготівкові оплати кур’єрів' },
+        { id: 'w_reserve', name: 'Резерв (гума / АКБ / гараж)', startBalance: 0, note: 'Відкладені кошти на парк та гараж' }
+      ],
+      transactions: [
+        {
+          id: 'tx_init_1',
+          date: offsetDate(-4),
+          type: 'income',
+          walletId: 'w_card',
+          amount: 3700,
+          category: 'Оренда скутерів',
+          note: 'Оренда №5 (Скутер №1, Мельник Т.В.)'
+        },
+        {
+          id: 'tx_init_2',
+          date: offsetDate(-7),
+          type: 'income',
+          walletId: 'w_cash',
+          amount: 3700,
+          category: 'Оренда скутерів',
+          note: 'Оренда №4 (Скутер №2, Ковальчук А.О.)'
+        },
+        {
+          id: 'tx_init_3',
+          date: offsetDate(-10),
+          type: 'expense',
+          walletId: 'w_cash',
+          amount: 1400,
+          category: 'Гума / Запчастини',
+          note: 'ТО Скутер №1: Kenda K701 120/70-12'
+        }
+      ],
       bikes: [
         { id: 'b1', num: '№1', model: 'Crosser CR-21', battery: '117 Ah', rate: 3700, note: 'Kenda K701 зима, багажник Glovo/Bolt' },
         { id: 'b2', num: '№2', model: 'Crosser CR-21', battery: '117 Ah', rate: 3700, note: 'Kenda K701 зима, 2 ключі' },
@@ -1531,7 +1784,7 @@
     let db = loadData();
     let currentTab = 'all';
     let rentalsDisplayMode = 'table';
-    let calOffsetDays = -3; // Починаємо показ за 3 дні до сьогодні, щоб було видно поточні та майбутні оренди
+    let calOffsetDays = -3;
     const CAL_DAYS_COUNT = 21;
 
     function offsetDate(days) {
@@ -1568,8 +1821,13 @@
 
     function loadData() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) return JSON.parse(raw);
+        const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('befast_crm_data_v1');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (!parsed.wallets) parsed.wallets = JSON.parse(JSON.stringify(defaultData.wallets));
+          if (!parsed.transactions) parsed.transactions = JSON.parse(JSON.stringify(defaultData.transactions));
+          return parsed;
+        }
       } catch (e) {}
       localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultData));
       return JSON.parse(JSON.stringify(defaultData));
@@ -1582,6 +1840,39 @@
 
     function getBike(id) {
       return db.bikes.find(b => b.id === id) || { num: '—', model: 'Видалений скутер', battery: '' };
+    }
+
+    function getWallet(id) {
+      return db.wallets.find(w => w.id === id) || { name: 'Каса', startBalance: 0, note: '' };
+    }
+
+    function getWalletBalance(walletId) {
+      const w = getWallet(walletId);
+      let bal = Number(w.startBalance || 0);
+      db.transactions.forEach(tx => {
+        const amt = Number(tx.amount || 0);
+        if (tx.type === 'income' && tx.walletId === walletId) bal += amt;
+        if (tx.type === 'expense' && tx.walletId === walletId) bal -= amt;
+        if (tx.type === 'transfer') {
+          if (tx.fromWalletId === walletId) bal -= amt;
+          if (tx.toWalletId === walletId) bal += amt;
+        }
+      });
+      return bal;
+    }
+
+    function addTransaction({ type, walletId, fromWalletId, toWalletId, amount, category, note, date }) {
+      db.transactions.unshift({
+        id: 'tx_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        date: date || offsetDate(0),
+        type,
+        walletId: walletId || null,
+        fromWalletId: fromWalletId || null,
+        toWalletId: toWalletId || null,
+        amount: Number(amount || 0),
+        category: category || 'Інше',
+        note: note || ''
+      });
     }
 
     function isBikeBusy(bikeId) {
@@ -1696,7 +1987,6 @@
           </div>
         `;
 
-        // Знаходимо оренди для цього скутера, які потрапляють у видимий діапазон дат
         const bikeRentals = db.rentals.filter(r =>
           r.bikeId === bike.id &&
           r.endDate >= firstIso &&
@@ -1886,14 +2176,14 @@
         return st === 'overdue' || st === 'pending';
       });
 
-      const totalRev = db.rentals.reduce((sum, r) => sum + Number(r.amount || 0), 0);
+      const totalBal = db.wallets.reduce((sum, w) => sum + getWalletBalance(w.id), 0);
       const totalDep = activeRentals.reduce((sum, r) => sum + Number(r.deposit || 0), 0);
 
       document.getElementById('kpiActiveRentals').textContent = activeRentals.length;
       document.getElementById('kpiFleetUtil').textContent = `З ${db.bikes.length} скутерів у парку`;
       document.getElementById('kpiFreeBikes').textContent = freeBikes.length;
       document.getElementById('kpiAlertRentals').textContent = alerts.length;
-      document.getElementById('kpiTotalRevenue').textContent = `${totalRev.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('kpiTotalBalance').textContent = `${totalBal.toLocaleString('uk-UA')} ₴`;
       document.getElementById('kpiDepositHeld').textContent = `Застав на руках: ${totalDep.toLocaleString('uk-UA')} ₴`;
 
       const upcomingBody = document.getElementById('dashboardUpcomingBody');
@@ -2018,25 +2308,87 @@
     }
 
     function renderFinance() {
-      const income = db.rentals.reduce((sum, r) => sum + Number(r.amount || 0), 0);
-      const expense = db.services.reduce((sum, s) => sum + Number(s.cost || 0), 0);
-      const net = income - expense;
+      const walletsGrid = document.getElementById('walletsGrid');
+      walletsGrid.innerHTML = db.wallets.map(w => {
+        const bal = getWalletBalance(w.id);
+        return `
+          <div class="wallet-card">
+            <div class="wallet-top">
+              <span class="wallet-name">💳 ${w.name}</span>
+              <span class="badge ${bal >= 0 ? 'badge-free' : 'badge-overdue'}">${bal >= 0 ? 'У плюсі' : 'Мінус'}</span>
+            </div>
+            <div class="wallet-balance" style="color:${bal < 0 ? 'var(--red)' : 'var(--text-main)'};">
+              ${bal.toLocaleString('uk-UA')} ₴
+            </div>
+            <div class="wallet-note">${w.note || 'Рахунок для обліку коштів'}</div>
+          </div>
+        `;
+      }).join('');
 
-      document.getElementById('finIncome').textContent = `${income.toLocaleString('uk-UA')} ₴`;
-      document.getElementById('finExpense').textContent = `${expense.toLocaleString('uk-UA')} ₴`;
-      document.getElementById('finNet').textContent = `${net.toLocaleString('uk-UA')} ₴`;
+      let totalIncome = 0;
+      let totalExpense = 0;
+      db.transactions.forEach(tx => {
+        if (tx.type === 'income') totalIncome += Number(tx.amount || 0);
+        if (tx.type === 'expense') totalExpense += Number(tx.amount || 0);
+      });
+      const totalAllBalances = db.wallets.reduce((sum, w) => sum + getWalletBalance(w.id), 0);
 
-      const tbody = document.getElementById('financeTableBody');
-      tbody.innerHTML = db.rentals.map(r => `
-        <tr>
-          <td><strong>${r.number}</strong></td>
-          <td>${r.clientName}</td>
-          <td>${formatDateUA(r.startDate)} — ${formatDateUA(r.endDate)}</td>
-          <td>${r.status === 'pending' ? '<span class="badge badge-pending">Очікується</span>' : '<span class="badge badge-free">Сплачено</span>'}</td>
-          <td>${Number(r.deposit || 0).toLocaleString('uk-UA')} ₴</td>
-          <td><strong>${Number(r.amount).toLocaleString('uk-UA')} ₴</strong></td>
-        </tr>
-      `).join('');
+      document.getElementById('finIncome').textContent = `+${totalIncome.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('finExpense').textContent = `−${totalExpense.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('finNet').textContent = `${totalAllBalances.toLocaleString('uk-UA')} ₴`;
+
+      const q = (document.getElementById('txFilterInput')?.value || '').toLowerCase().trim();
+      const tbody = document.getElementById('financeTxBody');
+
+      const filtered = db.transactions.filter(tx => {
+        if (!q) return true;
+        const wName = tx.type === 'transfer'
+          ? `${getWallet(tx.fromWalletId).name} ${getWallet(tx.toWalletId).name}`
+          : getWallet(tx.walletId).name;
+        const hay = `${tx.category} ${tx.note} ${wName}`.toLowerCase();
+        return hay.includes(q);
+      });
+
+      if (!filtered.length) {
+        tbody.innerHTML = `<tr><td colspan="6" class="empty-state">Фінансових операцій поки немає</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(tx => {
+        let typeBadge = '';
+        let walletLabel = '';
+        let amtHtml = '';
+
+        if (tx.type === 'income') {
+          typeBadge = `<span class="badge badge-free">+ Надходження</span>`;
+          walletLabel = `<strong>${getWallet(tx.walletId).name}</strong>`;
+          amtHtml = `<span class="amount-plus">+${Number(tx.amount).toLocaleString('uk-UA')} ₴</span>`;
+        } else if (tx.type === 'expense') {
+          typeBadge = `<span class="badge badge-overdue">− Витрата</span>`;
+          walletLabel = `<strong>${getWallet(tx.walletId).name}</strong>`;
+          amtHtml = `<span class="amount-minus">−${Number(tx.amount).toLocaleString('uk-UA')} ₴</span>`;
+        } else {
+          typeBadge = `<span class="badge badge-transfer">⇄ Переказ</span>`;
+          walletLabel = `<strong>${getWallet(tx.fromWalletId).name}</strong> → <strong>${getWallet(tx.toWalletId).name}</strong>`;
+          amtHtml = `<span class="amount">${Number(tx.amount).toLocaleString('uk-UA')} ₴</span>`;
+        }
+
+        return `
+          <tr>
+            <td>${formatDateUA(tx.date)}</td>
+            <td>${typeBadge}</td>
+            <td>${walletLabel}</td>
+            <td>
+              <div><strong>${tx.category || 'Операція'}</strong></div>
+              <div class="amount-sub">${tx.note || '—'}</div>
+            </td>
+            <td>${amtHtml}</td>
+            <td style="text-align:right;">
+              <button class="icon-btn danger" onclick="deleteTx('${tx.id}')" title="Видалити операцію">✕</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
     }
 
     function renderAll() {
@@ -2060,7 +2412,116 @@
       document.getElementById(id).classList.remove('open');
     }
 
+    function fillWalletSelects() {
+      const opts = db.wallets.map(w => `<option value="${w.id}">${w.name} (${getWalletBalance(w.id).toLocaleString('uk-UA')} ₴)</option>`).join('');
+      document.getElementById('txWalletId').innerHTML = opts;
+      document.getElementById('txFromWalletId').innerHTML = opts;
+      document.getElementById('txToWalletId').innerHTML = opts;
+      document.getElementById('rWalletId').innerHTML = opts;
+      document.getElementById('sWalletId').innerHTML = opts;
+      if (db.wallets.length > 1) {
+        document.getElementById('txToWalletId').selectedIndex = 1;
+      }
+    }
+
+    function openTxModal(type = 'income') {
+      fillWalletSelects();
+      document.getElementById('txType').value = type;
+      document.getElementById('txDate').value = offsetDate(0);
+      document.getElementById('txAmount').value = '';
+      document.getElementById('txNote').value = '';
+      toggleTxFields();
+      openModal('txModal');
+    }
+
+    function toggleTxFields() {
+      const type = document.getElementById('txType').value;
+      const isTransfer = type === 'transfer';
+      document.getElementById('txSingleWalletRow').classList.toggle('hidden', isTransfer);
+      document.getElementById('txTransferWalletsRow').classList.toggle('hidden', !isTransfer);
+      document.getElementById('txModalTitle').textContent =
+        type === 'income' ? '+ Додати надходження' :
+        type === 'expense' ? '− Записати витрату' :
+        '⇄ Переказ між рахунками';
+    }
+
+    function saveTx() {
+      const type = document.getElementById('txType').value;
+      const date = document.getElementById('txDate').value || offsetDate(0);
+      const amount = Number(document.getElementById('txAmount').value || 0);
+      const note = document.getElementById('txNote').value.trim();
+
+      if (amount <= 0) {
+        alert('Вкажи суму більше нуля.');
+        return;
+      }
+
+      if (type === 'transfer') {
+        const fromWalletId = document.getElementById('txFromWalletId').value;
+        const toWalletId = document.getElementById('txToWalletId').value;
+        if (!fromWalletId || !toWalletId || fromWalletId === toWalletId) {
+          alert('Обери два різні рахунки для переказу.');
+          return;
+        }
+        addTransaction({
+          type: 'transfer',
+          fromWalletId,
+          toWalletId,
+          amount,
+          category: 'Переказ між рахунками',
+          note: note || `${getWallet(fromWalletId).name} → ${getWallet(toWalletId).name}`,
+          date
+        });
+      } else {
+        const walletId = document.getElementById('txWalletId').value;
+        const category = document.getElementById('txCategory').value;
+        addTransaction({
+          type,
+          walletId,
+          amount,
+          category,
+          note,
+          date
+        });
+      }
+
+      closeModal('txModal');
+      saveData();
+    }
+
+    function deleteTx(id) {
+      if (!confirm('Видалити цю фінансову операцію?')) return;
+      db.transactions = db.transactions.filter(t => t.id !== id);
+      saveData();
+    }
+
+    function openWalletModal() {
+      document.getElementById('wName').value = '';
+      document.getElementById('wStartBalance').value = '0';
+      document.getElementById('wNote').value = '';
+      openModal('walletModal');
+    }
+
+    function saveWallet() {
+      const name = document.getElementById('wName').value.trim();
+      const startBalance = Number(document.getElementById('wStartBalance').value || 0);
+      const note = document.getElementById('wNote').value.trim();
+      if (!name) {
+        alert('Вкажи назву рахунку.');
+        return;
+      }
+      db.wallets.push({
+        id: 'w_' + Date.now(),
+        name,
+        startBalance,
+        note
+      });
+      closeModal('walletModal');
+      saveData();
+    }
+
     function openRentalModal(preselectedBikeId = '', customStartDate = '') {
+      fillWalletSelects();
       const select = document.getElementById('rBikeId');
       select.innerHTML = db.bikes.map(b => {
         const busy = isBikeBusy(b.id);
@@ -2093,15 +2554,17 @@
       const amount = Number(document.getElementById('rAmount').value || 0);
       const deposit = Number(document.getElementById('rDeposit').value || 0);
       const status = document.getElementById('rPayStatus').value;
+      const walletId = document.getElementById('rWalletId').value;
 
       if (!clientName || !clientPhone || !startDate || !endDate) {
         alert('Заповни ПІБ клієнта, телефон і дати оренди.');
         return;
       }
 
+      const numStr = '№' + db.nextRentalNum++;
       db.rentals.unshift({
         id: 'r_' + Date.now(),
-        number: '№' + db.nextRentalNum++,
+        number: numStr,
         bikeId,
         clientName,
         clientPhone,
@@ -2112,6 +2575,18 @@
         deposit,
         status
       });
+
+      if (status !== 'pending' && amount > 0) {
+        const bike = getBike(bikeId);
+        addTransaction({
+          type: 'income',
+          walletId,
+          amount,
+          category: 'Оренда скутерів',
+          note: `Оренда ${numStr} (${bike.num}, ${clientName})`,
+          date: startDate
+        });
+      }
 
       closeModal('rentalModal');
       saveData();
@@ -2124,15 +2599,34 @@
       base.setDate(base.getDate() + days);
       r.endDate = toIsoDate(base);
       const bike = getBike(r.bikeId);
-      r.amount = Number(r.amount || 0) + Number(bike.rate || 3500);
+      const addAmt = Number(bike.rate || 3500);
+      r.amount = Number(r.amount || 0) + addAmt;
       r.status = 'active';
+      addTransaction({
+        type: 'income',
+        walletId: db.wallets[0]?.id || 'w_cash',
+        amount: addAmt,
+        category: 'Оренда скутерів',
+        note: `Продовження +${days} дн. по ${r.number} (${r.clientName})`,
+        date: offsetDate(0)
+      });
       saveData();
     }
 
     function markPaid(id) {
       const r = db.rentals.find(x => x.id === id);
-      if (r) {
+      if (r && r.status === 'pending') {
         r.status = 'active';
+        if (Number(r.amount) > 0) {
+          addTransaction({
+            type: 'income',
+            walletId: db.wallets[0]?.id || 'w_cash',
+            amount: Number(r.amount),
+            category: 'Оренда скутерів',
+            note: `Оплата оренди ${r.number} (${r.clientName})`,
+            date: offsetDate(0)
+          });
+        }
         saveData();
       }
     }
@@ -2192,6 +2686,7 @@
     }
 
     function openServiceModal() {
+      fillWalletSelects();
       const select = document.getElementById('sBikeId');
       select.innerHTML = db.bikes.map(b => `<option value="${b.id}">Скутер ${b.num} (${b.model})</option>`).join('');
       document.getElementById('sDate').value = offsetDate(0);
@@ -2205,6 +2700,7 @@
       const date = document.getElementById('sDate').value;
       const desc = document.getElementById('sDesc').value.trim();
       const cost = Number(document.getElementById('sCost').value || 0);
+      const walletId = document.getElementById('sWalletId').value;
 
       if (!desc) {
         alert('Опиши виконані роботи.');
@@ -2218,6 +2714,18 @@
         desc,
         cost
       });
+
+      if (cost > 0) {
+        const bike = getBike(bikeId);
+        addTransaction({
+          type: 'expense',
+          walletId,
+          amount: cost,
+          category: 'Гума / Запчастини',
+          note: `ТО ${bike.num}: ${desc}`,
+          date
+        });
+      }
 
       closeModal('serviceModal');
       saveData();
@@ -2245,6 +2753,8 @@
         try {
           const parsed = JSON.parse(e.target.result);
           if (parsed.bikes && parsed.rentals) {
+            if (!parsed.wallets) parsed.wallets = JSON.parse(JSON.stringify(defaultData.wallets));
+            if (!parsed.transactions) parsed.transactions = JSON.parse(JSON.stringify(defaultData.transactions));
             db = parsed;
             saveData();
             alert('Базу успішно відновлено!');
