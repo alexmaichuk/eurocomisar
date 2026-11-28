@@ -338,7 +338,6 @@
       font-weight: 500;
     }
 
-    /* Mode Switcher (Таблиця / Календар) */
     .header-actions {
       display: flex;
       align-items: center;
@@ -662,6 +661,64 @@
       font-size: 12px;
       color: var(--text-muted);
       margin-top: 4px;
+    }
+
+    /* Financial Model Layout */
+    .fm-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .fm-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .fm-box h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .fm-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .fm-row-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+    }
+
+    .fm-row-item:last-child {
+      border-bottom: none;
+    }
+
+    .fm-summary-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--bg-main);
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .fm-summary-line.highlight {
+      background: var(--accent-soft);
+      border: 1px solid #fed7aa;
+      font-weight: 700;
     }
 
     /* RENTAL TIMELINE CALENDAR */
@@ -1053,6 +1110,12 @@
       display: none !important;
     }
 
+    @media (max-width: 960px) {
+      .fm-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 900px) {
       body {
         flex-direction: column;
@@ -1168,7 +1231,6 @@
           </div>
         </div>
 
-        <!-- РЕЖИМ: ТАБЛИЦЯ -->
         <div id="rentalsTableContainer">
           <div class="tabs-bar">
             <div class="tab-btn active" data-tab="all" onclick="setRentalTab('all')">
@@ -1219,7 +1281,6 @@
           </div>
         </div>
 
-        <!-- РЕЖИМ: КАЛЕНДАР ОРЕНДИ -->
         <div id="rentalsCalendarContainer" class="hidden">
           <div class="card">
             <div class="cal-controls">
@@ -1360,7 +1421,7 @@
         </div>
       </section>
 
-      <!-- 6. ФІНАНСИ -->
+      <!-- 6. ФІНАНСИ + ФІНМОДЕЛЬ -->
       <section id="view-finance" class="hidden">
         <div class="page-header">
           <div class="page-title">
@@ -1374,51 +1435,157 @@
           </div>
         </div>
 
-        <!-- Куди йдуть / де лежать гроші (рахунки) -->
-        <div class="wallets-grid" id="walletsGrid"></div>
+        <div class="tabs-bar">
+          <div class="tab-btn active" id="finTabLedger" onclick="setFinanceTab('ledger')">💳 Каси та транзакції</div>
+          <div class="tab-btn" id="finTabModel" onclick="setFinanceTab('model')">📈 Фінансова модель (План / Факт)</div>
+        </div>
 
-        <!-- Загальні підсумки -->
-        <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr);">
-          <div class="kpi-card">
-            <div class="kpi-label">ВСЬОГО НАДХОДЖЕНЬ</div>
-            <div class="kpi-value" style="color:var(--green);" id="finIncome">0 ₴</div>
-            <div class="kpi-foot" id="finRentalsInfo">Включно з оплатами оренд</div>
+        <!-- ВКЛАДКА А: КАСИ ТА ТРАНЗАКЦІЇ -->
+        <div id="financeLedgerView">
+          <div class="wallets-grid" id="walletsGrid"></div>
+
+          <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="kpi-card">
+              <div class="kpi-label">ВСЬОГО НАДХОДЖЕНЬ</div>
+              <div class="kpi-value" style="color:var(--green);" id="finIncome">0 ₴</div>
+              <div class="kpi-foot">Включно з оплатами оренд</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">ВСЬОГО ВИТРАТ</div>
+              <div class="kpi-value" style="color:var(--red);" id="finExpense">0 ₴</div>
+              <div class="kpi-foot">Включно із сервісом / ТО</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">ЗАГАЛЬНИЙ ЗАЛИШОК У КАСАХ</div>
+              <div class="kpi-value" id="finNet">0 ₴</div>
+              <div class="kpi-foot">Сума по всіх рахунках</div>
+            </div>
           </div>
-          <div class="kpi-card">
-            <div class="kpi-label">ВСЬОГО ВИТРАТ</div>
-            <div class="kpi-value" style="color:var(--red);" id="finExpense">0 ₴</div>
-            <div class="kpi-foot" id="finServiceInfo">Включно із сервісом / ТО</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">ЗАГАЛЬНИЙ ЗАЛИШОК У КАСАХ</div>
-            <div class="kpi-value" id="finNet">0 ₴</div>
-            <div class="kpi-foot">Сума по всіх рахунках</div>
+
+          <div class="card">
+            <div style="padding:14px 18px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <strong>Журнал фінансових операцій</strong>
+              <div class="search-box" style="width:260px;">
+                <span>🔎</span>
+                <input type="text" id="txFilterInput" placeholder="Категорія, рахунок, опис..." oninput="renderFinance()">
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Дата</th>
+                    <th>Тип</th>
+                    <th>Рахунок / Напрямок</th>
+                    <th>Категорія та опис</th>
+                    <th>Сума</th>
+                    <th style="text-align:right;">Дії</th>
+                  </tr>
+                </thead>
+                <tbody id="financeTxBody"></tbody>
+              </table>
+            </div>
           </div>
         </div>
 
-        <!-- Журнал операцій -->
-        <div class="card">
-          <div style="padding:14px 18px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-            <strong>Журнал фінансових операцій</strong>
-            <div class="search-box" style="width:260px;">
-              <span>🔎</span>
-              <input type="text" id="txFilterInput" placeholder="Категорія, рахунок, опис..." oninput="renderFinance()">
+        <!-- ВКЛАДКА Б: ФІНАНСОВА МОДЕЛЬ -->
+        <div id="financeModelView" class="hidden">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-label">ПЛАН ДОХОДУ / МІС</div>
+              <div class="kpi-value" style="color:var(--blue);" id="fmPlanIncome">0 ₴</div>
+              <div class="kpi-foot" id="fmPlanHint">На основі парку та завантаження</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">ПОСТІЙНІ ВИТРАТИ / МІС</div>
+              <div class="kpi-value" style="color:var(--red);" id="fmFixedTotal">0 ₴</div>
+              <div class="kpi-foot">Гараж, світло, зв'язок тощо</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">РЕЗЕРВ НА ЗНОС / ТО (МІС)</div>
+              <div class="kpi-value" style="color:var(--amber);" id="fmReserveTotal">0 ₴</div>
+              <div class="kpi-foot">Гума, підшипники, АКБ</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">ПРОГНОЗ ЧИСТОГО ПРИБУТКУ</div>
+              <div class="kpi-value" style="color:var(--green);" id="fmNetProfit">0 ₴</div>
+              <div class="kpi-foot" id="fmBreakEven">Точка беззбитковості: —</div>
             </div>
           </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Дата</th>
-                  <th>Тип</th>
-                  <th>Рахунок / Напрямок</th>
-                  <th>Категорія та опис</th>
-                  <th>Сума</th>
-                  <th style="text-align:right;">Дії</th>
-                </tr>
-              </thead>
-              <tbody id="financeTxBody"></tbody>
-            </table>
+
+          <div class="fm-grid">
+            <!-- Ліва колонка: Параметри моделі та Постійні витрати -->
+            <div class="fm-box">
+              <h3>Налаштування припущень (на 1 місяць)</h3>
+              <div class="fm-sub">Підстав свої реальні показники — розрахунки праворуч оновляться одразу.</div>
+
+              <div class="form-row" style="margin-bottom:16px;">
+                <div class="field">
+                  <label>Оплачених тижнів на місяць (фактор простоїв)</label>
+                  <input type="number" step="0.1" min="1" max="4.5" id="fmWeeksPerMonth" onchange="saveFmSettings()">
+                  <span style="font-size:11px; color:var(--text-muted);">Реалістично: 3.5–3.8 (з урахуванням зміни кур'єрів)</span>
+                </div>
+                <div class="field">
+                  <label>Резерв на знос / ТО (% від планового доходу)</label>
+                  <input type="number" min="0" max="60" id="fmReservePct" onchange="saveFmSettings()">
+                  <span style="font-size:11px; color:var(--text-muted);">Наприклад: 15–20% на гуму, колодки й АКБ</span>
+                </div>
+              </div>
+
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <strong style="font-size:14px;">Постійні місячні витрати парку</strong>
+                <button class="btn-ghost" onclick="addFixedExpense()">+ Додати статтю</button>
+              </div>
+
+              <div id="fixedExpensesList"></div>
+            </div>
+
+            <!-- Права колонка: Підсумок моделі та План/Факт -->
+            <div class="fm-box">
+              <h3>Зведення моделі та План / Факт</h3>
+              <div class="fm-sub">Окремо показує чистий дохід від оренди та застави клієнтів.</div>
+
+              <div class="fm-summary-line">
+                <span>Скутерів у парку / Зараз в оренді:</span>
+                <strong id="fmFleetStats">0 / 0</strong>
+              </div>
+              <div class="fm-summary-line">
+                <span>Середній тижневий тариф по парку:</span>
+                <strong id="fmAvgWeekly">0 ₴</strong>
+              </div>
+              <div class="fm-summary-line">
+                <span>Плановий місячний дохід (оренди):</span>
+                <strong id="fmSummaryPlanRev">0 ₴</strong>
+              </div>
+              <div class="fm-summary-line">
+                <span>Мінус постійні витрати:</span>
+                <strong style="color:var(--red);" id="fmSummaryFixed">0 ₴</strong>
+              </div>
+              <div class="fm-summary-line">
+                <span>Мінус резерв на знос / ТО:</span>
+                <strong style="color:var(--amber);" id="fmSummaryReserve">0 ₴</strong>
+              </div>
+              <div class="fm-summary-line highlight">
+                <span>Очікуваний чистий прибуток / міс:</span>
+                <strong style="color:var(--green); font-size:16px;" id="fmSummaryProfit">0 ₴</strong>
+              </div>
+
+              <hr style="border:none; border-top:1px solid var(--border); margin:16px 0;">
+
+              <div style="font-size:13px; font-weight:700; margin-bottom:10px;">Фактичні показники у базі CRM</div>
+              <div class="fm-summary-line">
+                <span>Фактично зафіксовано надходжень:</span>
+                <strong style="color:var(--green);" id="fmFactIncome">0 ₴</strong>
+              </div>
+              <div class="fm-summary-line">
+                <span>Застави на руках у клієнтів (не прибуток):</span>
+                <strong id="fmDepositsTotal">0 ₴</strong>
+              </div>
+              <div class="fm-summary-line">
+                <span>Точка беззбитковості (скутерів у роботі):</span>
+                <strong id="fmBreakEvenBikes">0 скутерів</strong>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1426,7 +1593,7 @@
     </main>
   </div>
 
-  <!-- МОДАЛКА: ФІНАНСОВА ОПЕРАЦІЯ (+ / - / ПЕРЕКАЗ) -->
+  <!-- МОДАЛКА: ФІНАНСОВА ОПЕРАЦІЯ -->
   <div class="modal-backdrop" id="txModal">
     <div class="modal">
       <div class="modal-head">
@@ -1451,7 +1618,7 @@
 
         <div class="form-row" id="txSingleWalletRow">
           <div class="field">
-            <label id="txWalletLabel">Рахунок *</label>
+            <label>Рахунок *</label>
             <select id="txWalletId"></select>
           </div>
           <div class="field">
@@ -1684,10 +1851,19 @@
   </div>
 
   <script>
-    const STORAGE_KEY = 'befast_crm_data_v2';
+    const STORAGE_KEY = 'befast_crm_data_v3';
 
     const defaultData = {
       nextRentalNum: 6,
+      fm: {
+        weeksPerMonth: 3.6,
+        reservePct: 18,
+        fixedExpenses: [
+          { id: 'fx1', name: 'Оренда гаража (Шевченківський р-н)', amount: 4500 },
+          { id: 'fx2', name: 'Електроенергія / зарядка АКБ', amount: 1200 },
+          { id: 'fx3', name: 'Оголошення / зв’язок / витратники', amount: 1000 }
+        ]
+      },
       wallets: [
         { id: 'w_cash', name: 'Готівка (каса)', startBalance: 0, note: 'Оплати готівкою та поточні витрати' },
         { id: 'w_card', name: 'Картка / Перекази', startBalance: 0, note: 'Безготівкові оплати кур’єрів' },
@@ -1783,6 +1959,7 @@
 
     let db = loadData();
     let currentTab = 'all';
+    let financeTab = 'ledger';
     let rentalsDisplayMode = 'table';
     let calOffsetDays = -3;
     const CAL_DAYS_COUNT = 21;
@@ -1821,11 +1998,12 @@
 
     function loadData() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('befast_crm_data_v1');
+        const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('befast_crm_data_v2') || localStorage.getItem('befast_crm_data_v1');
         if (raw) {
           const parsed = JSON.parse(raw);
           if (!parsed.wallets) parsed.wallets = JSON.parse(JSON.stringify(defaultData.wallets));
           if (!parsed.transactions) parsed.transactions = JSON.parse(JSON.stringify(defaultData.transactions));
+          if (!parsed.fm) parsed.fm = JSON.parse(JSON.stringify(defaultData.fm));
           return parsed;
         }
       } catch (e) {}
@@ -1895,6 +2073,15 @@
         document.getElementById(`view-${v}`).classList.toggle('hidden', v !== view);
       });
       renderAll();
+    }
+
+    function setFinanceTab(tab) {
+      financeTab = tab;
+      document.getElementById('finTabLedger').classList.toggle('active', tab === 'ledger');
+      document.getElementById('finTabModel').classList.toggle('active', tab === 'model');
+      document.getElementById('financeLedgerView').classList.toggle('hidden', tab !== 'ledger');
+      document.getElementById('financeModelView').classList.toggle('hidden', tab !== 'model');
+      renderFinance();
     }
 
     function setRentalsDisplayMode(mode) {
@@ -2351,44 +2538,124 @@
 
       if (!filtered.length) {
         tbody.innerHTML = `<tr><td colspan="6" class="empty-state">Фінансових операцій поки немає</td></tr>`;
-        return;
+      } else {
+        tbody.innerHTML = filtered.map(tx => {
+          let typeBadge = '';
+          let walletLabel = '';
+          let amtHtml = '';
+
+          if (tx.type === 'income') {
+            typeBadge = `<span class="badge badge-free">+ Надходження</span>`;
+            walletLabel = `<strong>${getWallet(tx.walletId).name}</strong>`;
+            amtHtml = `<span class="amount-plus">+${Number(tx.amount).toLocaleString('uk-UA')} ₴</span>`;
+          } else if (tx.type === 'expense') {
+            typeBadge = `<span class="badge badge-overdue">− Витрата</span>`;
+            walletLabel = `<strong>${getWallet(tx.walletId).name}</strong>`;
+            amtHtml = `<span class="amount-minus">−${Number(tx.amount).toLocaleString('uk-UA')} ₴</span>`;
+          } else {
+            typeBadge = `<span class="badge badge-transfer">⇄ Переказ</span>`;
+            walletLabel = `<strong>${getWallet(tx.fromWalletId).name}</strong> → <strong>${getWallet(tx.toWalletId).name}</strong>`;
+            amtHtml = `<span class="amount">${Number(tx.amount).toLocaleString('uk-UA')} ₴</span>`;
+          }
+
+          return `
+            <tr>
+              <td>${formatDateUA(tx.date)}</td>
+              <td>${typeBadge}</td>
+              <td>${walletLabel}</td>
+              <td>
+                <div><strong>${tx.category || 'Операція'}</strong></div>
+                <div class="amount-sub">${tx.note || '—'}</div>
+              </td>
+              <td>${amtHtml}</td>
+              <td style="text-align:right;">
+                <button class="icon-btn danger" onclick="deleteTx('${tx.id}')" title="Видалити операцію">✕</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
       }
 
-      tbody.innerHTML = filtered.map(tx => {
-        let typeBadge = '';
-        let walletLabel = '';
-        let amtHtml = '';
+      renderFinancialModel(totalIncome);
+    }
 
-        if (tx.type === 'income') {
-          typeBadge = `<span class="badge badge-free">+ Надходження</span>`;
-          walletLabel = `<strong>${getWallet(tx.walletId).name}</strong>`;
-          amtHtml = `<span class="amount-plus">+${Number(tx.amount).toLocaleString('uk-UA')} ₴</span>`;
-        } else if (tx.type === 'expense') {
-          typeBadge = `<span class="badge badge-overdue">− Витрата</span>`;
-          walletLabel = `<strong>${getWallet(tx.walletId).name}</strong>`;
-          amtHtml = `<span class="amount-minus">−${Number(tx.amount).toLocaleString('uk-UA')} ₴</span>`;
-        } else {
-          typeBadge = `<span class="badge badge-transfer">⇄ Переказ</span>`;
-          walletLabel = `<strong>${getWallet(tx.fromWalletId).name}</strong> → <strong>${getWallet(tx.toWalletId).name}</strong>`;
-          amtHtml = `<span class="amount">${Number(tx.amount).toLocaleString('uk-UA')} ₴</span>`;
-        }
+    /* FINANCIAL MODEL */
+    function renderFinancialModel(totalFactIncome) {
+      const fm = db.fm || defaultData.fm;
+      document.getElementById('fmWeeksPerMonth').value = fm.weeksPerMonth;
+      document.getElementById('fmReservePct').value = fm.reservePct;
 
-        return `
-          <tr>
-            <td>${formatDateUA(tx.date)}</td>
-            <td>${typeBadge}</td>
-            <td>${walletLabel}</td>
-            <td>
-              <div><strong>${tx.category || 'Операція'}</strong></div>
-              <div class="amount-sub">${tx.note || '—'}</div>
-            </td>
-            <td>${amtHtml}</td>
-            <td style="text-align:right;">
-              <button class="icon-btn danger" onclick="deleteTx('${tx.id}')" title="Видалити операцію">✕</button>
-            </td>
-          </tr>
-        `;
-      }).join('');
+      const fixedListEl = document.getElementById('fixedExpensesList');
+      fixedListEl.innerHTML = fm.fixedExpenses.map(fx => `
+        <div class="fm-row-item">
+          <input type="text" value="${fx.name}" style="flex:1; border:1px solid var(--border); border-radius:6px; padding:6px 8px; font-size:13px;" onchange="updateFixedExpense('${fx.id}', 'name', this.value)">
+          <input type="number" value="${fx.amount}" style="width:110px; border:1px solid var(--border); border-radius:6px; padding:6px 8px; font-size:13px; font-weight:600;" onchange="updateFixedExpense('${fx.id}', 'amount', this.value)">
+          <span style="font-size:12px; color:var(--text-muted);">₴</span>
+          <button class="icon-btn danger" onclick="deleteFixedExpense('${fx.id}')" title="Видалити статтю">✕</button>
+        </div>
+      `).join('');
+
+      const bikesCount = db.bikes.length;
+      const busyCount = db.bikes.filter(b => isBikeBusy(b.id)).length;
+      const avgWeekly = bikesCount
+        ? Math.round(db.bikes.reduce((s, b) => s + Number(b.rate || 0), 0) / bikesCount)
+        : 0;
+
+      const planIncome = Math.round(bikesCount * avgWeekly * Number(fm.weeksPerMonth || 3.6));
+      const fixedTotal = fm.fixedExpenses.reduce((s, fx) => s + Number(fx.amount || 0), 0);
+      const reserveTotal = Math.round(planIncome * (Number(fm.reservePct || 0) / 100));
+      const netProfit = planIncome - fixedTotal - reserveTotal;
+
+      const monthlyPerBike = avgWeekly * Number(fm.weeksPerMonth || 3.6) * (1 - Number(fm.reservePct || 0) / 100);
+      const breakEvenBikes = monthlyPerBike > 0 ? Math.ceil(fixedTotal / monthlyPerBike) : 0;
+
+      const activeRentals = db.rentals.filter(r => r.status !== 'done');
+      const depositsTotal = activeRentals.reduce((s, r) => s + Number(r.deposit || 0), 0);
+
+      document.getElementById('fmPlanIncome').textContent = `${planIncome.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmPlanHint').textContent = `${bikesCount} скут. × ${avgWeekly} ₴ × ${fm.weeksPerMonth} тиж.`;
+      document.getElementById('fmFixedTotal').textContent = `−${fixedTotal.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmReserveTotal').textContent = `−${reserveTotal.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmNetProfit').textContent = `${netProfit.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmNetProfit').style.color = netProfit >= 0 ? 'var(--green)' : 'var(--red)';
+      document.getElementById('fmBreakEven').textContent = `Точка беззбитковості: ${breakEvenBikes} скут.`;
+
+      document.getElementById('fmFleetStats').textContent = `${bikesCount} скутерів / ${busyCount} в оренді`;
+      document.getElementById('fmAvgWeekly').textContent = `${avgWeekly.toLocaleString('uk-UA')} ₴ / тиж.`;
+      document.getElementById('fmSummaryPlanRev').textContent = `${planIncome.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmSummaryFixed').textContent = `−${fixedTotal.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmSummaryReserve').textContent = `−${reserveTotal.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmSummaryProfit').textContent = `${netProfit.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmFactIncome').textContent = `${Number(totalFactIncome || 0).toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmDepositsTotal').textContent = `${depositsTotal.toLocaleString('uk-UA')} ₴`;
+      document.getElementById('fmBreakEvenBikes').textContent = `${breakEvenBikes} з ${bikesCount} скутерів`;
+    }
+
+    function saveFmSettings() {
+      db.fm.weeksPerMonth = parseFloat(document.getElementById('fmWeeksPerMonth').value) || 3.6;
+      db.fm.reservePct = parseFloat(document.getElementById('fmReservePct').value) || 0;
+      saveData();
+    }
+
+    function addFixedExpense() {
+      db.fm.fixedExpenses.push({
+        id: 'fx_' + Date.now(),
+        name: 'Нова стаття витрат',
+        amount: 500
+      });
+      saveData();
+    }
+
+    function updateFixedExpense(id, field, val) {
+      const fx = db.fm.fixedExpenses.find(x => x.id === id);
+      if (!fx) return;
+      fx[field] = field === 'amount' ? Number(val || 0) : val;
+      saveData();
+    }
+
+    function deleteFixedExpense(id) {
+      db.fm.fixedExpenses = db.fm.fixedExpenses.filter(x => x.id !== id);
+      saveData();
     }
 
     function renderAll() {
@@ -2755,6 +3022,7 @@
           if (parsed.bikes && parsed.rentals) {
             if (!parsed.wallets) parsed.wallets = JSON.parse(JSON.stringify(defaultData.wallets));
             if (!parsed.transactions) parsed.transactions = JSON.parse(JSON.stringify(defaultData.transactions));
+            if (!parsed.fm) parsed.fm = JSON.parse(JSON.stringify(defaultData.fm));
             db = parsed;
             saveData();
             alert('Базу успішно відновлено!');
