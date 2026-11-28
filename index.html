@@ -32,11 +32,7 @@
       --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -79,23 +75,10 @@
       box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
     }
 
-    .brand-title {
-      color: #fff;
-      font-weight: 800;
-      font-size: 16px;
-      letter-spacing: -0.02em;
-    }
+    .brand-title { color: #fff; font-weight: 800; font-size: 16px; letter-spacing: -0.02em; }
+    .brand-sub { font-size: 11px; color: #9ca3af; }
 
-    .brand-sub {
-      font-size: 11px;
-      color: #9ca3af;
-    }
-
-    .nav-scroll {
-      padding: 14px 10px;
-      flex: 1;
-      overflow-y: auto;
-    }
+    .nav-scroll { padding: 14px 10px; flex: 1; overflow-y: auto; }
 
     .nav-group {
       font-size: 10px;
@@ -119,22 +102,9 @@
       transition: all 0.15s;
     }
 
-    .nav-item:hover {
-      background: var(--sidebar-hover);
-      color: #fff;
-    }
-
-    .nav-item.active {
-      background: var(--sidebar-active);
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .nav-item:hover { background: var(--sidebar-hover); color: #fff; }
+    .nav-item.active { background: var(--sidebar-active); color: var(--accent); font-weight: 600; }
+    .nav-left { display: flex; align-items: center; gap: 10px; }
 
     .nav-badge {
       background: rgba(255, 255, 255, 0.1);
@@ -145,10 +115,7 @@
       font-weight: 600;
     }
 
-    .nav-item.active .nav-badge {
-      background: rgba(249, 115, 22, 0.2);
-      color: #fdba74;
-    }
+    .nav-item.active .nav-badge { background: rgba(249, 115, 22, 0.2); color: #fdba74; }
 
     .sidebar-footer {
       padding: 14px;
@@ -158,12 +125,7 @@
     }
 
     /* Main Content */
-    .main-wrap {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
+    .main-wrap { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
     .topbar {
       height: 62px;
@@ -197,11 +159,7 @@
       font-size: 13px;
     }
 
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
 
     .location-pill {
       background: var(--bg-main);
@@ -213,9 +171,7 @@
       color: var(--text-muted);
     }
 
-    .location-pill strong {
-      color: var(--text-main);
-    }
+    .location-pill strong { color: var(--text-main); }
 
     .btn-ghost {
       background: var(--surface);
@@ -232,9 +188,7 @@
       transition: background 0.15s;
     }
 
-    .btn-ghost:hover {
-      background: var(--bg-main);
-    }
+    .btn-ghost:hover { background: var(--bg-main); }
 
     .btn-primary {
       background: var(--accent);
@@ -252,9 +206,7 @@
       box-shadow: 0 2px 6px rgba(249, 115, 22, 0.25);
     }
 
-    .btn-primary:hover {
-      background: var(--accent-hover);
-    }
+    .btn-primary:hover { background: var(--accent-hover); }
 
     .btn-success {
       background: var(--green);
@@ -305,11 +257,7 @@
     }
 
     /* Page body */
-    .page-content {
-      padding: 24px 28px;
-      max-width: 1480px;
-      width: 100%;
-    }
+    .page-content { padding: 24px 28px; max-width: 1520px; width: 100%; }
 
     .page-header {
       display: flex;
@@ -320,30 +268,11 @@
       gap: 12px;
     }
 
-    .page-title {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
+    .page-title { display: flex; align-items: baseline; gap: 10px; }
+    .page-title h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+    .page-count { color: var(--text-muted); font-size: 15px; font-weight: 500; }
 
-    .page-title h1 {
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .page-count {
-      color: var(--text-muted);
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
     .view-switcher {
       display: inline-flex;
@@ -397,14 +326,8 @@
       gap: 6px;
     }
 
-    .tab-btn:hover {
-      color: var(--text-main);
-    }
-
-    .tab-btn.active {
-      color: var(--text-main);
-      border-bottom-color: var(--accent);
-    }
+    .tab-btn:hover { color: var(--text-main); }
+    .tab-btn.active { color: var(--text-main); border-bottom-color: var(--accent); }
 
     .tab-count {
       background: #e5e7eb;
@@ -453,19 +376,13 @@
       overflow: hidden;
     }
 
-    .table-wrap {
-      overflow-x: auto;
-    }
+    .table-wrap { overflow-x: auto; }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
 
     th {
       background: #f9fafb;
-      padding: 12px 16px;
+      padding: 12px 14px;
       font-size: 12px;
       font-weight: 600;
       color: var(--text-muted);
@@ -474,34 +391,17 @@
     }
 
     td {
-      padding: 14px 16px;
+      padding: 13px 14px;
       border-bottom: 1px solid var(--border);
       vertical-align: middle;
     }
 
-    tr:last-child td {
-      border-bottom: none;
-    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #fafafa; }
 
-    tbody tr:hover {
-      background: #fafafa;
-    }
-
-    .rental-id {
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .rental-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .client-name {
-      font-weight: 600;
-      color: var(--text-main);
-    }
+    .rental-id { font-weight: 700; color: var(--text-main); }
+    .rental-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .client-name { font-weight: 600; color: var(--text-main); }
 
     .client-meta {
       font-size: 12px;
@@ -510,21 +410,31 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
-    .bike-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 600;
-      color: var(--text-main);
+    .bike-pill { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--text-main); }
+    .bike-spec { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    .week-tag {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      background: #eef2ff;
+      color: #3730a3;
     }
 
-    .bike-spec {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 2px;
+    .week-tag.unpaid {
+      background: var(--amber-soft);
+      color: var(--amber);
     }
+
+    .pay-date-main { font-weight: 700; color: var(--text-main); font-size: 13px; }
+    .pay-date-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .pay-date-alert { color: var(--red); font-weight: 700; }
 
     .badge {
       display: inline-flex;
@@ -536,65 +446,19 @@
       white-space: nowrap;
     }
 
-    .badge-active {
-      background: var(--blue-soft);
-      color: var(--blue);
-    }
+    .badge-active { background: var(--blue-soft); color: var(--blue); }
+    .badge-overdue { background: var(--red-soft); color: var(--red); }
+    .badge-pending { background: var(--amber-soft); color: var(--amber); }
+    .badge-done { background: #f3f4f6; color: #4b5563; }
+    .badge-free { background: var(--green-soft); color: var(--green); }
+    .badge-transfer { background: var(--accent-soft); color: var(--accent-hover); }
 
-    .badge-overdue {
-      background: var(--red-soft);
-      color: var(--red);
-    }
+    .amount { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .amount-plus { color: var(--green); font-weight: 700; white-space: nowrap; }
+    .amount-minus { color: var(--red); font-weight: 700; white-space: nowrap; }
+    .amount-sub { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-top: 2px; }
 
-    .badge-pending {
-      background: var(--amber-soft);
-      color: var(--amber);
-    }
-
-    .badge-done {
-      background: #f3f4f6;
-      color: #4b5563;
-    }
-
-    .badge-free {
-      background: var(--green-soft);
-      color: var(--green);
-    }
-
-    .badge-transfer {
-      background: var(--accent-soft);
-      color: var(--accent-hover);
-    }
-
-    .amount {
-      font-weight: 700;
-      font-size: 14px;
-      white-space: nowrap;
-    }
-
-    .amount-plus {
-      color: var(--green);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .amount-minus {
-      color: var(--red);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .amount-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
-    .actions-cell {
-      display: flex;
-      gap: 6px;
-      justify-content: flex-end;
-    }
+    .actions-cell { display: flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap; }
 
     .icon-btn {
       border: 1px solid var(--border);
@@ -605,23 +469,12 @@
       font-size: 12px;
       font-weight: 600;
       color: var(--text-main);
+      white-space: nowrap;
     }
 
-    .icon-btn:hover {
-      background: #f3f4f6;
-    }
-
-    .icon-btn.success {
-      color: var(--green);
-      border-color: #bbf7d0;
-      background: #f0fdf4;
-    }
-
-    .icon-btn.danger {
-      color: var(--red);
-      border-color: #fecaca;
-      background: #fef2f2;
-    }
+    .icon-btn:hover { background: #f3f4f6; }
+    .icon-btn.success { color: var(--green); border-color: #bbf7d0; background: #f0fdf4; }
+    .icon-btn.danger { color: var(--red); border-color: #fecaca; background: #fef2f2; }
 
     /* Wallets / Accounts Grid */
     .wallets-grid {
@@ -639,37 +492,13 @@
       box-shadow: var(--shadow);
     }
 
-    .wallet-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .wallet-name {
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .wallet-balance {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .wallet-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
+    .wallet-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .wallet-name { font-weight: 700; font-size: 14px; }
+    .wallet-balance { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+    .wallet-note { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
     /* Financial Model Layout */
-    .fm-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
+    .fm-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; margin-top: 18px; }
 
     .fm-box {
       background: var(--surface);
@@ -679,17 +508,8 @@
       box-shadow: var(--shadow);
     }
 
-    .fm-box h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .fm-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
+    .fm-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .fm-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
 
     .fm-row-item {
       display: flex;
@@ -700,9 +520,7 @@
       gap: 12px;
     }
 
-    .fm-row-item:last-child {
-      border-bottom: none;
-    }
+    .fm-row-item:last-child { border-bottom: none; }
 
     .fm-summary-line {
       display: flex;
@@ -733,18 +551,8 @@
       gap: 12px;
     }
 
-    .cal-nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .cal-range-title {
-      font-weight: 700;
-      font-size: 14px;
-      min-width: 170px;
-      text-align: center;
-    }
+    .cal-nav { display: flex; align-items: center; gap: 8px; }
+    .cal-range-title { font-weight: 700; font-size: 14px; min-width: 170px; text-align: center; }
 
     .cal-legend {
       display: flex;
@@ -755,27 +563,10 @@
       flex-wrap: wrap;
     }
 
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 3px;
-    }
-
-    .cal-scroll {
-      overflow-x: auto;
-      position: relative;
-    }
-
-    .cal-grid {
-      display: grid;
-      min-width: 1180px;
-    }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+    .cal-scroll { overflow-x: auto; position: relative; }
+    .cal-grid { display: grid; min-width: 1180px; }
 
     .cal-corner {
       position: sticky;
@@ -801,25 +592,10 @@
       font-size: 11px;
     }
 
-    .cal-day-head.today {
-      background: var(--accent-soft);
-      color: var(--accent-hover);
-      font-weight: 700;
-    }
-
-    .cal-day-head.weekend {
-      background: #f3f4f6;
-    }
-
-    .cal-day-num {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .cal-day-head.today .cal-day-num {
-      color: var(--accent-hover);
-    }
+    .cal-day-head.today { background: var(--accent-soft); color: var(--accent-hover); font-weight: 700; }
+    .cal-day-head.weekend { background: #f3f4f6; }
+    .cal-day-num { font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .cal-day-head.today .cal-day-num { color: var(--accent-hover); }
 
     .cal-bike-col {
       position: sticky;
@@ -835,42 +611,14 @@
       gap: 3px;
     }
 
-    .cal-bike-title {
-      font-weight: 700;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-    }
+    .cal-bike-title { font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+    .cal-bike-sub { font-size: 11px; color: var(--text-muted); }
 
-    .cal-bike-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
+    .cal-track { position: relative; display: grid; border-bottom: 1px solid var(--border); min-height: 64px; align-items: center; }
 
-    .cal-track {
-      position: relative;
-      display: grid;
-      border-bottom: 1px solid var(--border);
-      min-height: 64px;
-      align-items: center;
-    }
-
-    .cal-cell {
-      height: 100%;
-      border-right: 1px solid #f1f5f9;
-      cursor: pointer;
-      transition: background 0.1s;
-    }
-
-    .cal-cell:hover {
-      background: #fff7ed;
-    }
-
-    .cal-cell.today {
-      background: rgba(249, 115, 22, 0.06);
-    }
+    .cal-cell { height: 100%; border-right: 1px solid #f1f5f9; cursor: pointer; transition: background 0.1s; }
+    .cal-cell:hover { background: #fff7ed; }
+    .cal-cell.today { background: rgba(249, 115, 22, 0.06); }
 
     .cal-bar {
       position: relative;
@@ -889,57 +637,16 @@
       transition: transform 0.12s, box-shadow 0.12s;
     }
 
-    .cal-bar:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
-      z-index: 8;
-    }
-
-    .cal-bar.active {
-      background: #e0f2fe;
-      border-left-color: #0284c7;
-      color: #0c4a6e;
-    }
-
-    .cal-bar.overdue {
-      background: #fee2e2;
-      border-left-color: #dc2626;
-      color: #7f1d1d;
-    }
-
-    .cal-bar.pending {
-      background: #fef3c7;
-      border-left-color: #d97706;
-      color: #78350f;
-    }
-
-    .cal-bar.done {
-      background: #f3f4f6;
-      border-left-color: #6b7280;
-      color: #374151;
-      opacity: 0.85;
-    }
-
-    .cal-bar-client {
-      font-weight: 700;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .cal-bar-dates {
-      font-size: 11px;
-      opacity: 0.9;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    .cal-bar:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14); z-index: 8; }
+    .cal-bar.active { background: #e0f2fe; border-left-color: #0284c7; color: #0c4a6e; }
+    .cal-bar.overdue { background: #fee2e2; border-left-color: #dc2626; color: #7f1d1d; }
+    .cal-bar.pending { background: #fef3c7; border-left-color: #d97706; color: #78350f; }
+    .cal-bar.done { background: #f3f4f6; border-left-color: #6b7280; color: #374151; opacity: 0.85; }
+    .cal-bar-client { font-weight: 700; overflow: hidden; text-overflow: ellipsis; }
+    .cal-bar-dates { font-size: 11px; opacity: 0.9; overflow: hidden; text-overflow: ellipsis; }
 
     /* Dashboard KPIs */
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 22px;
-    }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 22px; }
 
     .kpi-card {
       background: var(--surface);
@@ -949,31 +656,12 @@
       box-shadow: var(--shadow);
     }
 
-    .kpi-label {
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .kpi-value {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .kpi-foot {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
+    .kpi-label { color: var(--text-muted); font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+    .kpi-value { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+    .kpi-foot { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
 
     /* Fleet Grid */
-    .fleet-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 16px;
-    }
+    .fleet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
 
     .bike-card {
       background: var(--surface);
@@ -987,24 +675,9 @@
       gap: 14px;
     }
 
-    .bike-card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .bike-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .bike-meta-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
+    .bike-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .bike-card h3 { font-size: 16px; font-weight: 700; }
+    .bike-meta-list { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--text-muted); }
 
     /* Modal */
     .modal-backdrop {
@@ -1018,15 +691,13 @@
       padding: 16px;
     }
 
-    .modal-backdrop.open {
-      display: flex;
-    }
+    .modal-backdrop.open { display: flex; }
 
     .modal {
       background: var(--surface);
       border-radius: 16px;
       width: 100%;
-      max-width: 520px;
+      max-width: 540px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
       overflow: hidden;
     }
@@ -1039,43 +710,12 @@
       justify-content: space-between;
     }
 
-    .modal-head h2 {
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      color: var(--text-muted);
-    }
-
-    .modal-body {
-      padding: 20px 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .field label {
-      font-size: 12px;
-      font-weight: 600;
-      color: #374151;
-    }
+    .modal-head h2 { font-size: 17px; font-weight: 700; }
+    .close-btn { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
+    .modal-body { padding: 20px 22px; display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label { font-size: 12px; font-weight: 600; color: #374151; }
 
     .field input, .field select, .field textarea {
       border: 1px solid var(--border);
@@ -1086,8 +726,16 @@
       outline: none;
     }
 
-    .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: var(--accent);
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+
+    .calc-hint {
+      background: var(--accent-soft);
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.45;
     }
 
     .modal-foot {
@@ -1100,44 +748,18 @@
       flex-wrap: wrap;
     }
 
-    .empty-state {
-      text-align: center;
-      padding: 48px 20px;
-      color: var(--text-muted);
-    }
+    .empty-state { text-align: center; padding: 48px 20px; color: var(--text-muted); }
+    .hidden { display: none !important; }
 
-    .hidden {
-      display: none !important;
-    }
-
-    @media (max-width: 960px) {
-      .fm-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width: 960px) { .fm-grid { grid-template-columns: 1fr; } }
 
     @media (max-width: 900px) {
-      body {
-        flex-direction: column;
-      }
-      .sidebar {
-        width: 100%;
-      }
-      .nav-scroll {
-        display: flex;
-        overflow-x: auto;
-        gap: 6px;
-        padding: 10px;
-      }
-      .nav-group, .sidebar-footer {
-        display: none;
-      }
-      .kpi-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .global-search, .location-pill {
-        display: none;
-      }
+      body { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .nav-scroll { display: flex; overflow-x: auto; gap: 6px; padding: 10px; }
+      .nav-group, .sidebar-footer { display: none; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .global-search, .location-pill { display: none; }
     }
   </style>
 </head>
@@ -1184,7 +806,7 @@
     </div>
 
     <div class="sidebar-footer">
-      Дані зберігаються локально в браузері. Роби бекап кнопкою «Експорт».
+      Крок оренди: 7 днів. Дані зберігаються в браузері.
     </div>
   </aside>
 
@@ -1215,7 +837,7 @@
 
     <main class="page-content">
 
-      <!-- 1. ОРЕНДИ (ТАБЛИЦЯ + КАЛЕНДАР) -->
+      <!-- 1. ОРЕНДИ -->
       <section id="view-rentals">
         <div class="page-header">
           <div class="page-title">
@@ -1240,7 +862,7 @@
               Активні <span class="tab-count" id="tabCountActive">0</span>
             </div>
             <div class="tab-btn" data-tab="overdue" onclick="setRentalTab('overdue')">
-              Прострочені / Сьогодні <span class="tab-count" id="tabCountOverdue">0</span>
+              Прострочені / Оплата сьогодні <span class="tab-count" id="tabCountOverdue">0</span>
             </div>
             <div class="tab-btn" data-tab="pending" onclick="setRentalTab('pending')">
               Чекають оплати <span class="tab-count" id="tabCountPending">0</span>
@@ -1256,7 +878,7 @@
               <input type="text" id="rentalFilterInput" placeholder="ПІБ, Telegram, номер договору або скутер..." oninput="renderRentals()">
             </div>
             <div style="font-size:12px; color:var(--text-muted);">
-              Натисни <strong>«+7 дн.»</strong> для швидкої пролонгації тижневої оренди кур'єру
+              Здаємо по <strong>7 днів</strong> • Натисни <strong>«+1 тиж. (7 дн.)»</strong> для оплати наступного тижня
             </div>
           </div>
 
@@ -1267,9 +889,9 @@
                   <tr>
                     <th>Оренда</th>
                     <th>Клієнт (Кур'єр)</th>
-                    <th>Скутер та АКБ</th>
-                    <th>Початок</th>
-                    <th>Повернення / Оплата</th>
+                    <th>Скутер / Оплачений тиждень</th>
+                    <th>Початок / Термін</th>
+                    <th>День оплати / Повернення</th>
                     <th>Статус</th>
                     <th>Сума</th>
                     <th style="text-align:right;">Дії</th>
@@ -1292,7 +914,7 @@
               </div>
               <div class="cal-legend">
                 <span class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span> Активна</span>
-                <span class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span> Прострочена / Сьогодні</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span> Оплата сьогодні / Прострочена</span>
                 <span class="legend-item"><span class="legend-dot" style="background:#d97706;"></span> Чекає оплати</span>
                 <span style="color:var(--text-main); font-weight:500;">💡 Клікни по вільній даті, щоб оформити скутер</span>
               </div>
@@ -1307,9 +929,7 @@
       <!-- 2. ДАШБОРД -->
       <section id="view-dashboard" class="hidden">
         <div class="page-header">
-          <div class="page-title">
-            <h1>Дашборд</h1>
-          </div>
+          <div class="page-title"><h1>Дашборд</h1></div>
           <button class="btn-primary" onclick="openRentalModal()">+ Нова оренда</button>
         </div>
 
@@ -1327,7 +947,7 @@
           <div class="kpi-card">
             <div class="kpi-label">ПОТРЕБУЮТЬ ОПЛАТИ / ПРОСТРОЧЕНІ</div>
             <div class="kpi-value" style="color:var(--red);" id="kpiAlertRentals">0</div>
-            <div class="kpi-foot">Контроль продовження</div>
+            <div class="kpi-foot">Контроль оплати наприкінці тижня</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">ЗАГАЛЬНИЙ БАЛАНС РАХУНКІВ</div>
@@ -1337,15 +957,15 @@
         </div>
 
         <div class="card" style="padding:20px;">
-          <h3 style="margin-bottom:14px; font-size:16px;">Найближчі повернення та оплати</h3>
+          <h3 style="margin-bottom:14px; font-size:16px;">Найближчі дні оплати та повернення</h3>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
                   <th>Договір</th>
                   <th>Клієнт</th>
-                  <th>Скутер</th>
-                  <th>Дата закінчення</th>
+                  <th>Скутер / Тиждень</th>
+                  <th>День оплати</th>
                   <th>Залишилось</th>
                   <th>Сума</th>
                 </tr>
@@ -1356,7 +976,7 @@
         </div>
       </section>
 
-      <!-- 3. СКУТЕРИ (ПАРК) -->
+      <!-- 3. СКУТЕРИ -->
       <section id="view-bikes" class="hidden">
         <div class="page-header">
           <div class="page-title">
@@ -1398,9 +1018,7 @@
       <!-- 5. СЕРВІС / ТО -->
       <section id="view-service" class="hidden">
         <div class="page-header">
-          <div class="page-title">
-            <h1>Сервіс та технічне обслуговування</h1>
-          </div>
+          <div class="page-title"><h1>Сервіс та технічне обслуговування</h1></div>
           <button class="btn-primary" onclick="openServiceModal()">+ Запис на ТО / ремонт</button>
         </div>
         <div class="card">
@@ -1424,9 +1042,7 @@
       <!-- 6. ФІНАНСИ + ФІНМОДЕЛЬ -->
       <section id="view-finance" class="hidden">
         <div class="page-header">
-          <div class="page-title">
-            <h1>Фінанси, рахунки та каси</h1>
-          </div>
+          <div class="page-title"><h1>Фінанси, рахунки та каси</h1></div>
           <div class="header-actions">
             <button class="btn-success" onclick="openTxModal('income')">+ Надходження</button>
             <button class="btn-danger" onclick="openTxModal('expense')">− Витрата</button>
@@ -1440,7 +1056,6 @@
           <div class="tab-btn" id="finTabModel" onclick="setFinanceTab('model')">📈 Фінансова модель (План / Факт)</div>
         </div>
 
-        <!-- ВКЛАДКА А: КАСИ ТА ТРАНЗАКЦІЇ -->
         <div id="financeLedgerView">
           <div class="wallets-grid" id="walletsGrid"></div>
 
@@ -1488,7 +1103,6 @@
           </div>
         </div>
 
-        <!-- ВКЛАДКА Б: ФІНАНСОВА МОДЕЛЬ -->
         <div id="financeModelView" class="hidden">
           <div class="kpi-grid">
             <div class="kpi-card">
@@ -1514,7 +1128,6 @@
           </div>
 
           <div class="fm-grid">
-            <!-- Ліва колонка: Параметри моделі та Постійні витрати -->
             <div class="fm-box">
               <h3>Налаштування припущень (на 1 місяць)</h3>
               <div class="fm-sub">Підстав свої реальні показники — розрахунки праворуч оновляться одразу.</div>
@@ -1540,7 +1153,6 @@
               <div id="fixedExpensesList"></div>
             </div>
 
-            <!-- Права колонка: Підсумок моделі та План/Факт -->
             <div class="fm-box">
               <h3>Зведення моделі та План / Факт</h3>
               <div class="fm-sub">Окремо показує чистий дохід від оренди та застави клієнтів.</div>
@@ -1691,21 +1303,21 @@
     </div>
   </div>
 
-  <!-- МОДАЛКА: НОВА ОРЕНДА -->
+  <!-- МОДАЛКА: НОВА ОРЕНДА (7-ДЕННІ ЦИКЛИ) -->
   <div class="modal-backdrop" id="rentalModal">
     <div class="modal">
       <div class="modal-head">
-        <h2>Нова оренда електроскутера</h2>
+        <h2>Нова оренда (крок 7 днів)</h2>
         <button class="close-btn" onclick="closeModal('rentalModal')">&times;</button>
       </div>
       <div class="modal-body">
         <div class="field">
           <label>Електроскутер *</label>
-          <select id="rBikeId"></select>
+          <select id="rBikeId" onchange="recalcRentalForm()"></select>
         </div>
         <div class="field">
           <label>ПІБ клієнта (кур'єра) *</label>
-          <input type="text" id="rClientName" placeholder="Наприклад: Коваленко Максим Ігорович">
+          <input type="text" id="rClientName" placeholder="Наприклад: Мельник Тарас Васильович">
         </div>
         <div class="form-row">
           <div class="field">
@@ -1720,16 +1332,38 @@
         <div class="form-row">
           <div class="field">
             <label>Дата початку *</label>
-            <input type="date" id="rStartDate">
+            <input type="date" id="rStartDate" onchange="recalcRentalForm()">
           </div>
           <div class="field">
-            <label>Дата повернення / наступної оплати *</label>
-            <input type="date" id="rEndDate">
+            <label>На скільки хоче орендувати (тижнів) *</label>
+            <select id="rPlannedWeeks" onchange="recalcRentalForm()">
+              <option value="1">1 тиждень (7 днів)</option>
+              <option value="2">2 тижні (14 днів)</option>
+              <option value="3">3 тижні (21 день)</option>
+              <option value="4">4 тижні (28 днів)</option>
+              <option value="8">8 тижнів (56 днів)</option>
+            </select>
           </div>
         </div>
         <div class="form-row">
           <div class="field">
-            <label>Сума оренди (грн) *</label>
+            <label>Оплачено тижнів одразу (по 7 дн.)</label>
+            <select id="rPaidWeeks" onchange="recalcRentalForm()">
+              <option value="1">1-й тиждень (7 днів)</option>
+              <option value="2">1–2 тижні (14 днів)</option>
+              <option value="3">1–3 тижні (21 день)</option>
+              <option value="4">1–4 тижні (28 днів)</option>
+              <option value="0">0 тижнів (Чекає оплати)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Дата кінця бажаного терміну</label>
+            <input type="date" id="rEndDate" readonly style="background:#f9fafb;">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Сума до оплати (грн) *</label>
             <input type="number" id="rAmount" value="3500">
           </div>
           <div class="field">
@@ -1737,19 +1371,11 @@
             <input type="number" id="rDeposit" value="2000">
           </div>
         </div>
-        <div class="form-row">
-          <div class="field">
-            <label>Статус оплати</label>
-            <select id="rPayStatus">
-              <option value="active">Оплачено (Активна)</option>
-              <option value="pending">Чекає оплати</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Рахунок зарахування</label>
-            <select id="rWalletId"></select>
-          </div>
+        <div class="field">
+          <label>Рахунок зарахування</label>
+          <select id="rWalletId"></select>
         </div>
+        <div class="calc-hint" id="rCalcHint">—</div>
       </div>
       <div class="modal-foot">
         <button class="btn-ghost" onclick="closeModal('rentalModal')">Скасувати</button>
@@ -1794,7 +1420,7 @@
             <input type="text" id="bBattery" placeholder="94 Ah або 117 Ah">
           </div>
           <div class="field">
-            <label>Тариф за тиждень (грн)</label>
+            <label>Тариф за 7 днів (грн)</label>
             <input type="number" id="bRate" value="3500">
           </div>
         </div>
@@ -1851,10 +1477,10 @@
   </div>
 
   <script>
-    const STORAGE_KEY = 'befast_crm_data_v3';
+    const STORAGE_KEY = 'befast_crm_data_v4';
 
     const defaultData = {
-      nextRentalNum: 6,
+      nextRentalNum: 8,
       fm: {
         weeksPerMonth: 3.6,
         reservePct: 18,
@@ -1877,7 +1503,7 @@
           walletId: 'w_card',
           amount: 3700,
           category: 'Оренда скутерів',
-          note: 'Оренда №5 (Скутер №1, Мельник Т.В.)'
+          note: 'Оренда №5 (1-й тиж., Скутер №1, Мельник Т.В.)'
         },
         {
           id: 'tx_init_2',
@@ -1886,7 +1512,7 @@
           walletId: 'w_cash',
           amount: 3700,
           category: 'Оренда скутерів',
-          note: 'Оренда №4 (Скутер №2, Ковальчук А.О.)'
+          note: 'Оренда №4 (1-й тиж., Скутер №2, Ковальчук А.О.)'
         },
         {
           id: 'tx_init_3',
@@ -1914,7 +1540,8 @@
           clientPhone: '+380 67 412 88 19',
           clientTg: '@taras_lviv',
           startDate: offsetDate(-4),
-          endDate: offsetDate(3),
+          plannedWeeks: 3,
+          paidWeeks: 1,
           amount: 3700,
           deposit: 2000,
           status: 'active'
@@ -1927,7 +1554,8 @@
           clientPhone: '+380 93 551 20 44',
           clientTg: '@andriy_courier',
           startDate: offsetDate(-7),
-          endDate: offsetDate(0),
+          plannedWeeks: 2,
+          paidWeeks: 1,
           amount: 3700,
           deposit: 2000,
           status: 'active'
@@ -1940,7 +1568,8 @@
           clientPhone: '+380 50 890 11 32',
           clientTg: '@dima_bolt',
           startDate: offsetDate(-2),
-          endDate: offsetDate(5),
+          plannedWeeks: 4,
+          paidWeeks: 0,
           amount: 3500,
           deposit: 2000,
           status: 'pending'
@@ -1970,6 +1599,12 @@
       return toIsoDate(d);
     }
 
+    function addDaysIso(iso, days) {
+      const d = new Date(iso + 'T00:00:00');
+      d.setDate(d.getDate() + Number(days || 0));
+      return toIsoDate(d);
+    }
+
     function toIsoDate(d) {
       const y = d.getFullYear();
       const m = String(d.getMonth() + 1).padStart(2, '0');
@@ -1996,14 +1631,57 @@
       return Math.round((end - today) / (1000 * 60 * 60 * 24));
     }
 
+    function normalizeRental(r) {
+      const plannedWeeks = Math.max(1, Number(r.plannedWeeks || 1));
+      const paidWeeks = r.paidWeeks !== undefined
+        ? Math.max(0, Number(r.paidWeeks))
+        : (r.status === 'pending' ? 0 : 1);
+      return {
+        ...r,
+        plannedWeeks,
+        paidWeeks
+      };
+    }
+
+    /* Останній день поточного оплаченого тижня (або день старту, якщо ще не оплачено) */
+    function getNextPaymentDate(r) {
+      const norm = normalizeRental(r);
+      const coveredDays = Math.max(0, norm.paidWeeks * 7 - 1);
+      return addDaysIso(norm.startDate, coveredDays);
+    }
+
+    /* Останній день бажаного терміну оренди */
+    function getPlannedEndDate(r) {
+      const norm = normalizeRental(r);
+      return addDaysIso(norm.startDate, norm.plannedWeeks * 7 - 1);
+    }
+
+    function formatPaidWeeksLabel(r) {
+      const norm = normalizeRental(r);
+      if (norm.paidWeeks <= 0) return 'Не оплачено (0 тиж.)';
+      if (norm.paidWeeks === 1) return 'Оплачено: 1-й тиж. (7 дн.)';
+      return `Оплачено: 1–${norm.paidWeeks} тиж. (${norm.paidWeeks * 7} дн.)`;
+    }
+
+    function formatWeeksPlural(n) {
+      const num = Number(n || 1);
+      if (num === 1) return '1 тиждень (7 дн.)';
+      if (num >= 2 && num <= 4) return `${num} тижні (${num * 7} дн.)`;
+      return `${num} тижнів (${num * 7} дн.)`;
+    }
+
     function loadData() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('befast_crm_data_v2') || localStorage.getItem('befast_crm_data_v1');
+        const raw = localStorage.getItem(STORAGE_KEY)
+          || localStorage.getItem('befast_crm_data_v3')
+          || localStorage.getItem('befast_crm_data_v2')
+          || localStorage.getItem('befast_crm_data_v1');
         if (raw) {
           const parsed = JSON.parse(raw);
           if (!parsed.wallets) parsed.wallets = JSON.parse(JSON.stringify(defaultData.wallets));
           if (!parsed.transactions) parsed.transactions = JSON.parse(JSON.stringify(defaultData.transactions));
           if (!parsed.fm) parsed.fm = JSON.parse(JSON.stringify(defaultData.fm));
+          if (parsed.rentals) parsed.rentals = parsed.rentals.map(normalizeRental);
           return parsed;
         }
       } catch (e) {}
@@ -2017,7 +1695,7 @@
     }
 
     function getBike(id) {
-      return db.bikes.find(b => b.id === id) || { num: '—', model: 'Видалений скутер', battery: '' };
+      return db.bikes.find(b => b.id === id) || { num: '—', model: 'Видалений скутер', battery: '', rate: 3500 };
     }
 
     function getWallet(id) {
@@ -2059,8 +1737,9 @@
 
     function getComputedStatus(r) {
       if (r.status === 'done') return 'done';
-      if (r.status === 'pending') return 'pending';
-      const left = daysDiff(r.endDate);
+      if (r.status === 'pending' || normalizeRental(r).paidWeeks <= 0) return 'pending';
+      const payDate = getNextPaymentDate(r);
+      const left = daysDiff(payDate);
       if (left <= 0) return 'overdue';
       return 'active';
     }
@@ -2167,18 +1846,15 @@
 
         html += `
           <div class="cal-bike-col">
-            <div class="cal-bike-title">
-              <span>⚡ ${bike.num} • ${bike.model}</span>
-            </div>
+            <div class="cal-bike-title"><span>⚡ ${bike.num} • ${bike.model}</span></div>
             <div class="cal-bike-sub">${bike.battery} • ${statusDot}</div>
           </div>
         `;
 
-        const bikeRentals = db.rentals.filter(r =>
-          r.bikeId === bike.id &&
-          r.endDate >= firstIso &&
-          r.startDate <= lastIso
-        );
+        const bikeRentals = db.rentals.filter(r => {
+          const endBound = getPlannedEndDate(r);
+          return r.bikeId === bike.id && endBound >= firstIso && r.startDate <= lastIso;
+        });
 
         let trackCells = '';
         days.forEach((d, idx) => {
@@ -2192,15 +1868,19 @@
         });
 
         let barsHtml = '';
-        bikeRentals.forEach((r, rIdx) => {
+        bikeRentals.forEach((rawR, rIdx) => {
+          const r = normalizeRental(rawR);
           const st = getComputedStatus(r);
+          const endBound = getPlannedEndDate(r);
+          const payDate = getNextPaymentDate(r);
+
           let startIdx = days.findIndex(d => d.iso >= r.startDate);
           if (startIdx === -1) startIdx = 0;
           if (r.startDate < firstIso) startIdx = 0;
 
           let endIdx = -1;
           for (let i = days.length - 1; i >= 0; i--) {
-            if (days[i].iso <= r.endDate) {
+            if (days[i].iso <= endBound) {
               endIdx = i;
               break;
             }
@@ -2214,10 +1894,10 @@
           barsHtml += `
             <div class="cal-bar ${st}"
                  style="grid-column: ${colStart} / ${colEnd}; grid-row: ${rIdx + 1};"
-                 title="${r.number}: ${r.clientName} (${formatDateUA(r.startDate)} — ${formatDateUA(r.endDate)})"
+                 title="${r.number}: ${r.clientName} • Оплата: ${formatDateUA(payDate)} • Термін: ${formatWeeksPlural(r.plannedWeeks)}"
                  onclick="openRentalDetail('${r.id}')">
-              <div class="cal-bar-client">${r.number} • ${shortClient}</div>
-              <div class="cal-bar-dates">${formatShortDate(r.startDate)} — ${formatShortDate(r.endDate)}</div>
+              <div class="cal-bar-client">${r.number} • ${shortClient} (${r.paidWeeks}/${r.plannedWeeks} тиж.)</div>
+              <div class="cal-bar-dates">Оплата: ${formatShortDate(payDate)}</div>
             </div>
           `;
         });
@@ -2234,11 +1914,14 @@
     }
 
     function openRentalDetail(id) {
-      const r = db.rentals.find(x => x.id === id);
-      if (!r) return;
+      const rawR = db.rentals.find(x => x.id === id);
+      if (!rawR) return;
+      const r = normalizeRental(rawR);
       const bike = getBike(r.bikeId);
       const st = getComputedStatus(r);
-      const left = daysDiff(r.endDate);
+      const payDate = getNextPaymentDate(r);
+      const plannedEnd = getPlannedEndDate(r);
+      const left = daysDiff(payDate);
 
       document.getElementById('detailModalTitle').textContent = `Оренда ${r.number} • Скутер ${bike.num}`;
       document.getElementById('detailModalBody').innerHTML = `
@@ -2247,15 +1930,17 @@
           <div><strong>Клієнт:</strong> ${r.clientName}</div>
           <div><strong>Телефон:</strong> <a href="tel:${r.clientPhone}" style="color:var(--blue); font-weight:600;">${r.clientPhone}</a></div>
           ${r.clientTg ? `<div><strong>Telegram:</strong> <a href="https://t.me/${r.clientTg.replace('@','')}" target="_blank" style="color:var(--blue);">${r.clientTg}</a></div>` : ''}
-          <div><strong>Термін оренди:</strong> ${formatDateUA(r.startDate)} — <strong>${formatDateUA(r.endDate)}</strong> (${left < 0 ? 'прострочено ' + Math.abs(left) + ' дн.' : left === 0 ? 'сьогодні оплата' : 'залишилось ' + left + ' дн.'})</div>
+          <div><strong>Оплачено:</strong> ${formatPaidWeeksLabel(r)}</div>
+          <div><strong>Хоче орендувати:</strong> ${formatWeeksPlural(r.plannedWeeks)} (до ${formatDateUA(plannedEnd)})</div>
+          <div><strong>День оплати:</strong> <strong>${formatDateUA(payDate)}</strong> (${left < 0 ? 'прострочено ' + Math.abs(left) + ' дн.' : left === 0 ? 'оплата сьогодні' : 'залишилось ' + left + ' дн.'})</div>
           <div><strong>Сума:</strong> ${Number(r.amount).toLocaleString('uk-UA')} ₴ (Застава: ${Number(r.deposit || 0).toLocaleString('uk-UA')} ₴)</div>
         </div>
       `;
 
       document.getElementById('detailModalFoot').innerHTML = `
         <button class="btn-ghost" onclick="closeModal('rentalDetailModal')">Закрити</button>
-        ${st === 'pending' ? `<button class="icon-btn success" style="padding:8px 14px;" onclick="markPaid('${r.id}'); closeModal('rentalDetailModal');">✓ Позначити оплаченим</button>` : ''}
-        ${st !== 'done' ? `<button class="btn-primary" onclick="extendRental('${r.id}', 7); closeModal('rentalDetailModal');">+7 днів (Продовжити)</button>` : ''}
+        ${st === 'pending' ? `<button class="icon-btn success" style="padding:8px 14px;" onclick="markPaid('${r.id}'); closeModal('rentalDetailModal');">✓ Оплатити 1-й тиж.</button>` : ''}
+        ${st !== 'done' ? `<button class="btn-primary" onclick="extendRental('${r.id}', 1); closeModal('rentalDetailModal');">+1 тиж. (7 дн.)</button>` : ''}
         ${st !== 'done' ? `<button class="icon-btn success" style="padding:8px 14px;" onclick="finishRental('${r.id}'); closeModal('rentalDetailModal');">Завершити оренду</button>` : ''}
       `;
       openModal('rentalDetailModal');
@@ -2271,8 +1956,8 @@
       let countPending = 0;
       let countDone = 0;
 
-      db.rentals.forEach(r => {
-        const st = getComputedStatus(r);
+      db.rentals.forEach(rawR => {
+        const st = getComputedStatus(rawR);
         if (st === 'active') countActive++;
         if (st === 'overdue') countOverdue++;
         if (st === 'pending') countPending++;
@@ -2286,7 +1971,8 @@
       document.getElementById('tabCountDone').textContent = countDone;
       document.getElementById('rentalsHeaderCount').textContent = countAll;
 
-      const filtered = db.rentals.filter(r => {
+      const filtered = db.rentals.filter(rawR => {
+        const r = normalizeRental(rawR);
         const st = getComputedStatus(r);
         if (currentTab !== 'all' && st !== currentTab) return false;
         if (!q) return true;
@@ -2300,15 +1986,18 @@
         return;
       }
 
-      tbody.innerHTML = filtered.map(r => {
+      tbody.innerHTML = filtered.map(rawR => {
+        const r = normalizeRental(rawR);
         const bike = getBike(r.bikeId);
         const st = getComputedStatus(r);
-        const left = daysDiff(r.endDate);
+        const payDate = getNextPaymentDate(r);
+        const plannedEnd = getPlannedEndDate(r);
+        const left = daysDiff(payDate);
 
         let badgeHtml = '';
         if (st === 'active') badgeHtml = `<span class="badge badge-active">Активна (ще ${left} дн.)</span>`;
         if (st === 'overdue') {
-          const label = left === 0 ? 'Сьогодні оплата' : `Прострочено ${Math.abs(left)} дн.`;
+          const label = left === 0 ? 'Оплата сьогодні' : `Прострочено ${Math.abs(left)} дн.`;
           badgeHtml = `<span class="badge badge-overdue">${label}</span>`;
         }
         if (st === 'pending') badgeHtml = `<span class="badge badge-pending">Чекає оплати</span>`;
@@ -2318,11 +2007,17 @@
           ? `<a href="https://t.me/${r.clientTg.replace('@', '')}" target="_blank">${r.clientTg}</a>`
           : '';
 
+        const weekBadgeClass = r.paidWeeks <= 0 ? 'week-tag unpaid' : 'week-tag';
+        const payAlertClass = (st === 'overdue' || st === 'pending') ? 'pay-date-main pay-date-alert' : 'pay-date-main';
+        const payNote = st === 'done'
+          ? `Завершено (${formatDateUA(plannedEnd)})`
+          : `Останній день оплати (по 7 дн.)`;
+
         return `
           <tr>
             <td>
               <div class="rental-id">${r.number}</div>
-              <div class="rental-sub">Прокат</div>
+              <div class="rental-sub">Крок 7 дн.</div>
             </td>
             <td>
               <div class="client-name">${r.clientName}</div>
@@ -2334,9 +2029,17 @@
             <td>
               <div class="bike-pill">⚡ Скутер ${bike.num} • ${bike.model}</div>
               <div class="bike-spec">АКБ: ${bike.battery}</div>
+              <div class="${weekBadgeClass}">${formatPaidWeeksLabel(r)}</div>
             </td>
-            <td>${formatDateUA(r.startDate)}</td>
-            <td><strong>${formatDateUA(r.endDate)}</strong></td>
+            <td>
+              <div><strong>${formatDateUA(r.startDate)}</strong></div>
+              <div class="rental-sub">Хоче: ${formatWeeksPlural(r.plannedWeeks)}</div>
+              <div class="rental-sub">До: ${formatDateUA(plannedEnd)}</div>
+            </td>
+            <td>
+              <div class="${payAlertClass}">${formatDateUA(payDate)}</div>
+              <div class="pay-date-sub">${payNote}</div>
+            </td>
             <td>${badgeHtml}</td>
             <td>
               <div class="amount">${Number(r.amount).toLocaleString('uk-UA')} ₴</div>
@@ -2344,8 +2047,8 @@
             </td>
             <td>
               <div class="actions-cell">
-                ${st === 'pending' ? `<button class="icon-btn success" onclick="markPaid('${r.id}')">✓ Оплачено</button>` : ''}
-                ${st !== 'done' ? `<button class="icon-btn" onclick="extendRental('${r.id}', 7)">+7 дн.</button>` : ''}
+                ${st === 'pending' ? `<button class="icon-btn success" onclick="markPaid('${r.id}')">✓ Оплачено 1 тиж.</button>` : ''}
+                ${st !== 'done' ? `<button class="icon-btn" onclick="extendRental('${r.id}', 1)">+1 тиж. (7 дн.)</button>` : ''}
                 ${st !== 'done' ? `<button class="icon-btn success" onclick="finishRental('${r.id}')">Завершити</button>` : ''}
                 <button class="icon-btn danger" onclick="deleteRental('${r.id}')" title="Видалити">✕</button>
               </div>
@@ -2356,7 +2059,7 @@
     }
 
     function renderDashboard() {
-      const activeRentals = db.rentals.filter(r => r.status !== 'done');
+      const activeRentals = db.rentals.filter(r => r.status !== 'done').map(normalizeRental);
       const freeBikes = db.bikes.filter(b => !isBikeBusy(b.id));
       const alerts = activeRentals.filter(r => {
         const st = getComputedStatus(r);
@@ -2379,17 +2082,18 @@
         return;
       }
 
-      const sorted = [...activeRentals].sort((a, b) => a.endDate.localeCompare(b.endDate));
+      const sorted = [...activeRentals].sort((a, b) => getNextPaymentDate(a).localeCompare(getNextPaymentDate(b)));
       upcomingBody.innerHTML = sorted.map(r => {
         const bike = getBike(r.bikeId);
-        const left = daysDiff(r.endDate);
-        const leftLabel = left < 0 ? `Прострочено на ${Math.abs(left)} дн.` : left === 0 ? 'Сьогодні' : `${left} дн.`;
+        const payDate = getNextPaymentDate(r);
+        const left = daysDiff(payDate);
+        const leftLabel = left < 0 ? `Прострочено на ${Math.abs(left)} дн.` : left === 0 ? 'Оплата сьогодні' : `${left} дн.`;
         return `
           <tr>
             <td><strong>${r.number}</strong></td>
             <td>${r.clientName} (${r.clientPhone})</td>
-            <td>Скутер ${bike.num} (${bike.battery})</td>
-            <td>${formatDateUA(r.endDate)}</td>
+            <td>Скутер ${bike.num} • ${formatPaidWeeksLabel(r)}</td>
+            <td><strong>${formatDateUA(payDate)}</strong></td>
             <td><strong>${leftLabel}</strong></td>
             <td><strong>${Number(r.amount).toLocaleString('uk-UA')} ₴</strong></td>
           </tr>
@@ -2406,6 +2110,10 @@
           ? `<span class="badge badge-active">В оренді (${activeRental.number})</span>`
           : `<span class="badge badge-free">Вільний</span>`;
 
+        const payInfo = activeRental
+          ? `<div style="color:var(--blue); margin-top:4px;">👤 У: <strong>${activeRental.clientName}</strong> • Оплата: <strong>${formatDateUA(getNextPaymentDate(activeRental))}</strong></div>`
+          : '';
+
         return `
           <div class="bike-card">
             <div>
@@ -2415,9 +2123,9 @@
               </div>
               <div class="bike-meta-list" style="margin-top:12px;">
                 <div>🔋 Батарея: <strong>${b.battery}</strong></div>
-                <div>💵 Тариф: <strong>${Number(b.rate).toLocaleString('uk-UA')} ₴ / тиждень</strong></div>
+                <div>💵 Тариф: <strong>${Number(b.rate).toLocaleString('uk-UA')} ₴ / 7 днів</strong></div>
                 <div>📝 ${b.note || 'Без приміток'}</div>
-                ${activeRental ? `<div style="color:var(--blue); margin-top:4px;">👤 Зараз у: <strong>${activeRental.clientName}</strong> до ${formatDateUA(activeRental.endDate)}</div>` : ''}
+                ${payInfo}
               </div>
             </div>
             <div style="display:flex; gap:8px; justify-content:space-between; border-top:1px solid var(--border); padding-top:12px;">
@@ -2621,7 +2329,7 @@
       document.getElementById('fmBreakEven').textContent = `Точка беззбитковості: ${breakEvenBikes} скут.`;
 
       document.getElementById('fmFleetStats').textContent = `${bikesCount} скутерів / ${busyCount} в оренді`;
-      document.getElementById('fmAvgWeekly').textContent = `${avgWeekly.toLocaleString('uk-UA')} ₴ / тиж.`;
+      document.getElementById('fmAvgWeekly').textContent = `${avgWeekly.toLocaleString('uk-UA')} ₴ / 7 дн.`;
       document.getElementById('fmSummaryPlanRev').textContent = `${planIncome.toLocaleString('uk-UA')} ₴`;
       document.getElementById('fmSummaryFixed').textContent = `−${fixedTotal.toLocaleString('uk-UA')} ₴`;
       document.getElementById('fmSummaryReserve').textContent = `−${reserveTotal.toLocaleString('uk-UA')} ₴`;
@@ -2638,11 +2346,7 @@
     }
 
     function addFixedExpense() {
-      db.fm.fixedExpenses.push({
-        id: 'fx_' + Date.now(),
-        name: 'Нова стаття витрат',
-        amount: 500
-      });
+      db.fm.fixedExpenses.push({ id: 'fx_' + Date.now(), name: 'Нова стаття витрат', amount: 500 });
       saveData();
     }
 
@@ -2671,13 +2375,8 @@
     }
 
     /* Modals & CRUD */
-    function openModal(id) {
-      document.getElementById(id).classList.add('open');
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('open');
-    }
+    function openModal(id) { document.getElementById(id).classList.add('open'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
     function fillWalletSelects() {
       const opts = db.wallets.map(w => `<option value="${w.id}">${w.name} (${getWalletBalance(w.id).toLocaleString('uk-UA')} ₴)</option>`).join('');
@@ -2686,9 +2385,7 @@
       document.getElementById('txToWalletId').innerHTML = opts;
       document.getElementById('rWalletId').innerHTML = opts;
       document.getElementById('sWalletId').innerHTML = opts;
-      if (db.wallets.length > 1) {
-        document.getElementById('txToWalletId').selectedIndex = 1;
-      }
+      if (db.wallets.length > 1) document.getElementById('txToWalletId').selectedIndex = 1;
     }
 
     function openTxModal(type = 'income') {
@@ -2742,14 +2439,7 @@
       } else {
         const walletId = document.getElementById('txWalletId').value;
         const category = document.getElementById('txCategory').value;
-        addTransaction({
-          type,
-          walletId,
-          amount,
-          category,
-          note,
-          date
-        });
+        addTransaction({ type, walletId, amount, category, note, date });
       }
 
       closeModal('txModal');
@@ -2777,12 +2467,7 @@
         alert('Вкажи назву рахунку.');
         return;
       }
-      db.wallets.push({
-        id: 'w_' + Date.now(),
-        name,
-        startBalance,
-        note
-      });
+      db.wallets.push({ id: 'w_' + Date.now(), name, startBalance, note });
       closeModal('walletModal');
       saveData();
     }
@@ -2793,22 +2478,44 @@
       select.innerHTML = db.bikes.map(b => {
         const busy = isBikeBusy(b.id);
         return `<option value="${b.id}" ${b.id === preselectedBikeId ? 'selected' : ''}>
-          Скутер ${b.num} (${b.model}, ${b.battery}) ${busy ? '— [ЗАЙНЯТИЙ]' : '— [Вільний]'}
+          Скутер ${b.num} (${b.model}, ${b.battery} • ${b.rate} ₴/тиж.) ${busy ? '— [ЗАЙНЯТИЙ]' : '— [Вільний]'}
         </option>`;
       }).join('');
 
-      const startIso = customStartDate || offsetDate(0);
-      const endObj = new Date(startIso + 'T00:00:00');
-      endObj.setDate(endObj.getDate() + 7);
-
-      const selectedBike = getBike(preselectedBikeId || db.bikes[0]?.id);
-      document.getElementById('rAmount').value = selectedBike.rate || 3500;
-      document.getElementById('rStartDate').value = startIso;
-      document.getElementById('rEndDate').value = toIsoDate(endObj);
+      document.getElementById('rStartDate').value = customStartDate || offsetDate(0);
+      document.getElementById('rPlannedWeeks').value = '2';
+      document.getElementById('rPaidWeeks').value = '1';
       document.getElementById('rClientName').value = '';
       document.getElementById('rClientPhone').value = '';
       document.getElementById('rClientTg').value = '';
+      recalcRentalForm();
       openModal('rentalModal');
+    }
+
+    function recalcRentalForm() {
+      const bike = getBike(document.getElementById('rBikeId').value || db.bikes[0]?.id);
+      const rate = Number(bike.rate || 3500);
+      const startDate = document.getElementById('rStartDate').value || offsetDate(0);
+      const plannedWeeks = Math.max(1, Number(document.getElementById('rPlannedWeeks').value || 1));
+      const paidWeeks = Math.max(0, Number(document.getElementById('rPaidWeeks').value || 0));
+
+      const plannedEnd = addDaysIso(startDate, plannedWeeks * 7 - 1);
+      const nextPayDate = paidWeeks > 0
+        ? addDaysIso(startDate, paidWeeks * 7 - 1)
+        : startDate;
+
+      document.getElementById('rEndDate').value = plannedEnd;
+      document.getElementById('rAmount').value = paidWeeks > 0 ? paidWeeks * rate : rate;
+
+      const paidText = paidWeeks <= 0
+        ? 'оплата ще не внесена (чекає оплати)'
+        : paidWeeks === 1
+          ? '1-й тиждень'
+          : `1–${paidWeeks} тижні`;
+
+      document.getElementById('rCalcHint').innerHTML =
+        `<strong>Оплачено:</strong> ${paidText} • <strong>Бажаний термін:</strong> ${formatWeeksPlural(plannedWeeks)} (до ${formatDateUA(plannedEnd)})<br>` +
+        `<strong>День оплати:</strong> <u>${formatDateUA(nextPayDate)}</u> (останній день оплаченого періоду по 7 дн.)`;
     }
 
     function saveRental() {
@@ -2817,18 +2524,20 @@
       const clientPhone = document.getElementById('rClientPhone').value.trim();
       const clientTg = document.getElementById('rClientTg').value.trim();
       const startDate = document.getElementById('rStartDate').value;
-      const endDate = document.getElementById('rEndDate').value;
+      const plannedWeeks = Math.max(1, Number(document.getElementById('rPlannedWeeks').value || 1));
+      const paidWeeks = Math.max(0, Number(document.getElementById('rPaidWeeks').value || 0));
       const amount = Number(document.getElementById('rAmount').value || 0);
       const deposit = Number(document.getElementById('rDeposit').value || 0);
-      const status = document.getElementById('rPayStatus').value;
       const walletId = document.getElementById('rWalletId').value;
 
-      if (!clientName || !clientPhone || !startDate || !endDate) {
-        alert('Заповни ПІБ клієнта, телефон і дати оренди.');
+      if (!clientName || !clientPhone || !startDate) {
+        alert('Заповни ПІБ клієнта, телефон і дату початку.');
         return;
       }
 
+      const status = paidWeeks > 0 ? 'active' : 'pending';
       const numStr = '№' + db.nextRentalNum++;
+
       db.rentals.unshift({
         id: 'r_' + Date.now(),
         number: numStr,
@@ -2837,20 +2546,21 @@
         clientPhone,
         clientTg,
         startDate,
-        endDate,
+        plannedWeeks,
+        paidWeeks,
         amount,
         deposit,
         status
       });
 
-      if (status !== 'pending' && amount > 0) {
+      if (paidWeeks > 0 && amount > 0) {
         const bike = getBike(bikeId);
         addTransaction({
           type: 'income',
           walletId,
           amount,
           category: 'Оренда скутерів',
-          note: `Оренда ${numStr} (${bike.num}, ${clientName})`,
+          note: `Оренда ${numStr} (${formatPaidWeeksLabel({ paidWeeks })}, ${bike.num}, ${clientName})`,
           date: startDate
         });
       }
@@ -2859,43 +2569,64 @@
       saveData();
     }
 
-    function extendRental(id, days) {
-      const r = db.rentals.find(x => x.id === id);
-      if (!r) return;
-      const base = new Date(r.endDate + 'T00:00:00');
-      base.setDate(base.getDate() + days);
-      r.endDate = toIsoDate(base);
+    /* Продовження рівно на +1 тиждень (7 днів) */
+    function extendRental(id, weeksToAdd = 1) {
+      const rawR = db.rentals.find(x => x.id === id);
+      if (!rawR) return;
+      const r = normalizeRental(rawR);
+      const addW = Math.max(1, Number(weeksToAdd || 1));
+
+      r.paidWeeks += addW;
+      if (r.plannedWeeks < r.paidWeeks) {
+        r.plannedWeeks = r.paidWeeks;
+      }
+
       const bike = getBike(r.bikeId);
-      const addAmt = Number(bike.rate || 3500);
+      const addAmt = Number(bike.rate || 3500) * addW;
       r.amount = Number(r.amount || 0) + addAmt;
       r.status = 'active';
+
+      const newPayDate = getNextPaymentDate(r);
+
       addTransaction({
         type: 'income',
         walletId: db.wallets[0]?.id || 'w_cash',
         amount: addAmt,
         category: 'Оренда скутерів',
-        note: `Продовження +${days} дн. по ${r.number} (${r.clientName})`,
+        note: `Оплата +${addW} тиж. (7 дн.) по ${r.number} • до ${formatDateUA(newPayDate)} (${r.clientName})`,
         date: offsetDate(0)
       });
+
+      Object.assign(rawR, r);
       saveData();
     }
 
     function markPaid(id) {
-      const r = db.rentals.find(x => x.id === id);
-      if (r && r.status === 'pending') {
-        r.status = 'active';
-        if (Number(r.amount) > 0) {
-          addTransaction({
-            type: 'income',
-            walletId: db.wallets[0]?.id || 'w_cash',
-            amount: Number(r.amount),
-            category: 'Оренда скутерів',
-            note: `Оплата оренди ${r.number} (${r.clientName})`,
-            date: offsetDate(0)
-          });
-        }
-        saveData();
+      const rawR = db.rentals.find(x => x.id === id);
+      if (!rawR) return;
+      const r = normalizeRental(rawR);
+      const bike = getBike(r.bikeId);
+      const payAmt = Number(r.amount || bike.rate || 3500);
+
+      if (r.paidWeeks <= 0) {
+        r.paidWeeks = 1;
+        r.amount = payAmt;
       }
+      r.status = 'active';
+
+      if (payAmt > 0) {
+        addTransaction({
+          type: 'income',
+          walletId: db.wallets[0]?.id || 'w_cash',
+          amount: payAmt,
+          category: 'Оренда скутерів',
+          note: `Оплата 1-го тиж. (7 дн.) по ${r.number} (${r.clientName})`,
+          date: offsetDate(0)
+        });
+      }
+
+      Object.assign(rawR, r);
+      saveData();
     }
 
     function finishRental(id) {
@@ -2929,15 +2660,7 @@
         return;
       }
 
-      db.bikes.push({
-        id: 'b_' + Date.now(),
-        num,
-        model,
-        battery,
-        rate,
-        note
-      });
-
+      db.bikes.push({ id: 'b_' + Date.now(), num, model, battery, rate, note });
       closeModal('bikeModal');
       saveData();
     }
@@ -2974,13 +2697,7 @@
         return;
       }
 
-      db.services.unshift({
-        id: 's_' + Date.now(),
-        bikeId,
-        date,
-        desc,
-        cost
-      });
+      db.services.unshift({ id: 's_' + Date.now(), bikeId, date, desc, cost });
 
       if (cost > 0) {
         const bike = getBike(bikeId);
@@ -3023,6 +2740,7 @@
             if (!parsed.wallets) parsed.wallets = JSON.parse(JSON.stringify(defaultData.wallets));
             if (!parsed.transactions) parsed.transactions = JSON.parse(JSON.stringify(defaultData.transactions));
             if (!parsed.fm) parsed.fm = JSON.parse(JSON.stringify(defaultData.fm));
+            parsed.rentals = parsed.rentals.map(normalizeRental);
             db = parsed;
             saveData();
             alert('Базу успішно відновлено!');
